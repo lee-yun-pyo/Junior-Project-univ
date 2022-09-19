@@ -1,0 +1,19 @@
+{
+  "name": "junior-project-univ",
+  "version": "1.0.0",
+  "description": "It's a just study project for my University class(DB Programming)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lee-yun-pyo/Junior-Project-univ.git"
+  },
+  "author": "Yunpyo Lee",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lee-yun-pyo/Junior-Project-univ/issues"
+  },
+  "homepage": "https://github.com/lee-yun-pyo/Junior-Project-univ#readme"
+}
