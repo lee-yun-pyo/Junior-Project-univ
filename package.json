@@ -18,5 +18,9 @@
   "homepage": "https://github.com/lee-yun-pyo/Junior-Project-univ#readme",
   "dependencies": {
     "express": "^4.18.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.19.1",
+    "@babel/preset-env": "^7.19.1"
   }
 }
