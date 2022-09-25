@@ -1,9 +1,11 @@
 import express from "express";
-import { watch, edit } from "../controllers/postController";
+import { see, edit, upload, deletePost } from "../controllers/postController";
 
 const postRouter = express.Router();
 
-postRouter.get("/watch", watch);
-postRouter.get("/edit", edit);
+postRouter.get("/upload", upload);
+postRouter.get("/:id", see);
+postRouter.get("/:id/edit", edit);
+postRouter.get("/:id/delete", deletePost);
 
 export default postRouter;
