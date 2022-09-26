@@ -1,4 +1,4 @@
-export const recentPosts = (req, res) => res.send("recent posts");
+export const home = (req, res) => res.render("home");
 export const see = (req, res) => res.send("watch post");
 export const edit = (req, res) => res.send("edit post");
 export const search = (req, res) => res.send("Posts Search");

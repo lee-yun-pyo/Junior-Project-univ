@@ -10,6 +10,10 @@ const app = express(); // express() 함수: express application 생성
 const logger = morgan("dev");
 app.use(logger);
 
+/* pug Setting */
+app.set("view engine", "pug");
+app.set("views", process.cwd() + "/src/views");
+
 app.use("/", globalRouter);
 app.use("/users", userRouter);
 app.use("/posts", postRouter);
