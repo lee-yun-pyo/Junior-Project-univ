@@ -1,11 +1,18 @@
 import express from "express";
-import { see, edit, upload, deletePost } from "../controllers/postController";
+import {
+  watch,
+  getEdit,
+  postEdit,
+  getUpload,
+  postUpload,
+  deletePost,
+} from "../controllers/postController";
 
 const postRouter = express.Router();
 
-postRouter.get("/upload", upload);
-postRouter.get("/:id", see);
-postRouter.get("/:id/edit", edit);
+postRouter.route("/upload").get(getUpload).post(postUpload);
+postRouter.get("/:id", watch);
+postRouter.route("/:id/edit").get(getEdit).post(postEdit);
 postRouter.get("/:id/delete", deletePost);
 
 export default postRouter;

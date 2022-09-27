@@ -1,0 +1,8 @@
+mixin post(info)
+    div 
+        h4 
+            a(href=`/posts/${info.id}`)=info.name
+        ul 
+            li #{info.rating} / 5
+            li #{info.views} 조회수
+            li #{info.createdAt}
