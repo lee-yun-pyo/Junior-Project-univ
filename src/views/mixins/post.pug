@@ -2,7 +2,6 @@ mixin post(info)
     div 
         h4 
             a(href=`/posts/${info.id}`)=info.title
-        ul 
-            li #{info.rating} / 5
-            li #{info.views} 조회수
-            li #{info.createdAt}
+        p=info.description
+        small=info.createdAt
+        hr
