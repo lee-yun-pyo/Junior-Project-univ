@@ -9,9 +9,10 @@ export const home = async (req, res) => {
   }
 };
 
-export const watch = (req, res) => {
+export const watch = async (req, res) => {
   const { id } = req.params;
-  res.render("watch", { pageTitle: `Watch` });
+  const post = await Post.findById(id);
+  res.render("watch", { pageTitle: post.title, post });
 };
 export const getEdit = (req, res) => {
   const { id } = req.params;

@@ -1,5 +1,7 @@
 extends base.pug
 
 block content
-    h4 #{video.views} #{video.views == 1 ? "view" : "views"}
-    a(href=`${video.id}/edit`) Edit &rarr;
+    p=post.description
+    small=post.createdAt
+    h4 #{post.meta.views} #{post.meta.views <= 1 ? "view" : "views"}
+    a(href=`${post.id}/edit`) Edit &rarr;
