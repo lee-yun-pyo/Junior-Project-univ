@@ -2,6 +2,7 @@ extends base
 include mixins/post
 
 block content 
-    h1 home Window
-    each item in videos 
+    each item in posts 
         +post(item)
+    else 
+        li Sorry, this nothing
