@@ -28,8 +28,17 @@ export const getUpload = (req, res) => {
   res.render("upload", { pageTitle: "Upload Post" });
 };
 
-export const postUpload = (req, res) => {
-  const { title } = req.body;
+export const postUpload = async (req, res) => {
+  const { title, description } = req.body;
+  await Post.create({
+    title,
+    description,
+    createdAt: Date.now(),
+    meta: {
+      views: 0,
+      thumbsup: 0,
+    },
+  });
   res.redirect("/");
 };
 
