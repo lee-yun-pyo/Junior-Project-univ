@@ -30,16 +30,18 @@ export const getUpload = (req, res) => {
 
 export const postUpload = async (req, res) => {
   const { title, description } = req.body;
-  await Post.create({
-    title,
-    description,
-    createdAt: Date.now(),
-    meta: {
-      views: 0,
-      thumbsup: 0,
-    },
-  });
-  res.redirect("/");
+  try {
+    await Post.create({
+      title,
+      description,
+    });
+    res.redirect("/");
+  } catch (error) {
+    res.render("upload", {
+      pageTitle: "Upload Post",
+      errorMessage: error._message,
+    });
+  }
 };
 
 export const deletePost = (req, res) => res.send("Delete Post");
