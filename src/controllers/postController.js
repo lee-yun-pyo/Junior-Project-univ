@@ -12,16 +12,32 @@ export const home = async (req, res) => {
 export const watch = async (req, res) => {
   const { id } = req.params;
   const post = await Post.findById(id);
+  if (!post) {
+    res.render("404", { pageTitle: "Not Found" });
+  }
   res.render("watch", { pageTitle: post.title, post });
 };
-export const getEdit = (req, res) => {
+
+export const getEdit = async (req, res) => {
   const { id } = req.params;
-  res.render("edit", { pageTitle: `Edit` });
+  const post = await Post.findById(id);
+  if (!post) {
+    res.render("404", { pageTitle: "Not Found" });
+  }
+  res.render("edit", { pageTitle: `Edit`, post });
 };
 
-export const postEdit = (req, res) => {
+export const postEdit = async (req, res) => {
   const { id } = req.params;
-  const { title } = req.body;
+  const { title, description } = req.body;
+  const post = await Post.exists({ _id: id });
+  if (!post) {
+    res.render("404", { pageTitle: "Not Found" });
+  }
+  await Post.findByIdAndUpdate(id, {
+    title,
+    description,
+  });
   res.redirect(`/posts/${id}`);
 };
 export const search = (req, res) => res.send("Posts Search");
