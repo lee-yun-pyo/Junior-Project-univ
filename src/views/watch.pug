@@ -5,3 +5,4 @@ block content
     small=post.createdAt
     h4 #{post.meta.views} #{post.meta.views <= 1 ? "view" : "views"}
     a(href=`${post.id}/edit`) Edit &rarr;
+    a(href=`${post.id}/delete`) Delete &rarr;

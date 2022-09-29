@@ -2,7 +2,7 @@ import Post from "../models/Post";
 
 export const home = async (req, res) => {
   try {
-    const posts = await Post.find({});
+    const posts = await Post.find({}).sort({ createdAt: "desc" });
     res.render("home", { pageTitle: "home", posts });
   } catch {
     res.render("server-error");
@@ -40,7 +40,19 @@ export const postEdit = async (req, res) => {
   });
   res.redirect(`/posts/${id}`);
 };
-export const search = (req, res) => res.send("Posts Search");
+export const search = async (req, res) => {
+  const { keyword } = req.query;
+  let posts = [];
+  if (keyword) {
+    posts = await Post.find({
+      title: {
+        $regex: new RegExp(keyword, "i"),
+      },
+    });
+  }
+  res.render("search", { pageTitle: "Search Post", posts });
+};
+
 export const getUpload = (req, res) => {
   res.render("upload", { pageTitle: "Upload Post" });
 };
@@ -61,4 +73,8 @@ export const postUpload = async (req, res) => {
   }
 };
 
-export const deletePost = (req, res) => res.send("Delete Post");
+export const deletePost = async (req, res) => {
+  const { id } = req.params;
+  await Post.findByIdAndDelete(id);
+  res.redirect("/");
+};

@@ -1,0 +1,12 @@
+extends base
+include mixins/post
+
+block content 
+    form(method="GET")
+        input(name="keyword" type="text" placeholder="search a title")
+        input(value="search" type="submit")
+
+    each item in posts 
+        +post(item)
+    else 
+        li Sorry, this nothing
