@@ -1,21 +1,33 @@
 import express from "express";
 import morgan from "morgan";
+import session from "express-session";
 import globalRouter from "./routers/globalRouter";
 import userRouter from "./routers/userRouter";
 import postRouter from "./routers/postRouter";
+import { localsMiddlewares } from "./middlewares";
 
 const app = express(); // express() 함수: express application 생성
 
 const logger = morgan("dev");
 app.use(logger);
 
-/* pug Setting */
+/* pug Setting middlewares */
 app.set("view engine", "pug");
 app.set("views", process.cwd() + "/src/views");
 
 /* req.body 가져오기 위한 middleware */
 app.use(express.urlencoded({ extended: true }));
 
+/* session 처리 middleware */
+app.use(
+  session({
+    secret: "keyboard cat",
+    resave: true,
+    saveUninitialized: true,
+  })
+);
+
+app.use(localsMiddlewares);
 app.use("/", globalRouter);
 app.use("/users", userRouter);
 app.use("/posts", postRouter);
