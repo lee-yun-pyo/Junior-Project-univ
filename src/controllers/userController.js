@@ -61,12 +61,62 @@ export const postLogin = async (req, res) => {
 export const getEdit = (req, res) => {
   res.render("edit-profile", { pageTitle: "Edit Profile" });
 };
-export const postEdit = (req, res) => {
-  res.render("edit-profile");
+export const postEdit = async (req, res) => {
+  const {
+    body: { name, email },
+    session: {
+      user: { _id },
+    },
+  } = req;
+  const updateUser = await User.findByIdAndUpdate(
+    _id,
+    { name, email },
+    { new: true }
+  );
+  req.session.user = updateUser;
+  res.redirect("/users/edit");
 };
 export const remove = (req, res) => res.send("delete user");
 export const logout = (req, res) => {
   req.session.destroy();
   res.redirect("/");
+};
+
+export const getChangePassword = (req, res) => {
+  return res.render("change-password", { pageTitle: "비밀번호 변경" });
+};
+
+export const postChangePassword = async (req, res) => {
+  const pageTitle = "비밀번호 변경";
+  const {
+    body: { oldPassword, newPassword, newPassword2 },
+    session: {
+      user: { _id, password },
+    },
+  } = req;
+  const ok = await bcrypt.compare(oldPassword, password); // 맞지 않으면 false 맞 true
+  if (!ok) {
+    return res.status(400).render("change-password", {
+      pageTitle,
+      errorMessage: "현 비밀번호가 다릅니다",
+    });
+  }
+  if (oldPassword === newPassword) {
+    return res.status(400).render("change-password", {
+      pageTitle,
+      errorMessage: "현재 비밀번호와 새 비밀번호가 같습니다",
+    });
+  }
+  if (newPassword !== newPassword2) {
+    return res.status(400).render("change-password", {
+      pageTitle,
+      errorMessage: "새 비밀번호가 다릅니다",
+    });
+  }
+  const user = await User.findById(_id);
+  user.password = newPassword;
+  await user.save();
+  req.session.destroy();
+  res.redirect("/login");
 };
 export const see = (req, res) => res.send("user Seee");

@@ -8,13 +8,13 @@ html(lang="en")
         h1=pageTitle
         nav 
             ul 
-                li 
-                    a(href="/posts/upload") Upload
                 li
                     a(href="/") Home
                 li 
                     a(href="/search") Search
                 if loggedIn
+                    li 
+                        a(href="/posts/upload") Upload
                     li
                         a(href="/users/edit") Edit Profile
                     li 
