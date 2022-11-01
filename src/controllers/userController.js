@@ -5,13 +5,19 @@ export const getJoin = (req, res) =>
   res.render("join", { pageTitle: "회원 가입" });
 
 export const postJoin = async (req, res) => {
-  const { email, password, password2, name } = req.body;
+  const { id, password, password2, name } = req.body;
   const pageTitle = "회원 가입";
-  const emailExists = await User.exists({ email });
-  if (emailExists) {
+  const idExists = await User.exists({ id });
+  const nameExists = await User.exists({ name });
+  if (nameExists) {
     return res
       .status(400)
-      .render("join", { pageTitle, errorMessage: "이메일이 존재합니다" });
+      .render("join", { pageTitle, errorMessage: "Name이 존재합니다" });
+  }
+  if (idExists) {
+    return res
+      .status(400)
+      .render("join", { pageTitle, errorMessage: "ID가 존재합니다" });
   }
   if (password !== password2) {
     return res
@@ -20,7 +26,7 @@ export const postJoin = async (req, res) => {
   }
   try {
     await User.create({
-      email,
+      id,
       password,
       name,
     });
@@ -37,15 +43,15 @@ export const getLogin = (req, res) =>
   res.render("login", { pageTitle: "Login" });
 
 export const postLogin = async (req, res) => {
-  const { email, password } = req.body;
+  const { id, password } = req.body;
   const pageTitle = "Login";
-  // * 이메일 있는지 확인
+  // * ID 있는지 확인
   // 비번 확인
-  const user = await User.findOne({ email }); // 있으면 object 반환 없으면 null
+  const user = await User.findOne({ id }); // 있으면 object 반환 없으면 null
   if (!user) {
     return res.status(400).render("login", {
       pageTitle,
-      errorMessage: "이메일 존재 하지 않음",
+      errorMessage: "ID 존재 하지 않음",
     });
   }
   const isPassword = await bcrypt.compare(password, user.password); // 맞지 않으면 false 맞 true
@@ -63,14 +69,36 @@ export const getEdit = (req, res) => {
 };
 export const postEdit = async (req, res) => {
   const {
-    body: { name, email },
+    body: { name, id },
     session: {
       user: { _id },
     },
   } = req;
+  const nowUser = await User.findById({ _id });
+  if (name === nowUser.name && id === nowUser.id) {
+    return res.status(400).render("edit-profile", {
+      pageTitle,
+      errorMessage: "Name 또는 ID를 변경하세요",
+    });
+  }
+  const pageTitle = "Edit Profile";
+  const nameExists = await User.exists({ name });
+  const idExists = await User.exists({ id });
+  if (nameExists) {
+    return res.status(400).render("edit-profile", {
+      pageTitle,
+      errorMessage: "Name이 이미 존재합니다",
+    });
+  }
+  if (idExists) {
+    return res.status(400).render("edit-profile", {
+      pageTitle,
+      errorMessage: "ID가 이미 존재합니다",
+    });
+  }
   const updateUser = await User.findByIdAndUpdate(
     _id,
-    { name, email },
+    { name, id },
     { new: true }
   );
   req.session.user = updateUser;
