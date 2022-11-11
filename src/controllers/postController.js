@@ -1,4 +1,5 @@
 import Post from "../models/Post";
+import User from "../models/User";
 
 export const home = async (req, res) => {
   try {
@@ -11,7 +12,7 @@ export const home = async (req, res) => {
 
 export const watch = async (req, res) => {
   const { id } = req.params;
-  const post = await Post.findById(id);
+  const post = await Post.findById(id).populate("owner");
   if (!post) {
     res.status(404).render("404", { pageTitle: "Not Found" });
   }
@@ -64,6 +65,9 @@ export const getUpload = (req, res) => {
 
 export const postUpload = async (req, res) => {
   const {
+    session: {
+      user: { _id },
+    },
     body: { title, description },
     file,
   } = req;
@@ -72,6 +76,7 @@ export const postUpload = async (req, res) => {
       imageUrl: file.path,
       title,
       description,
+      owner: _id,
     });
     res.redirect("/");
   } catch (error) {
