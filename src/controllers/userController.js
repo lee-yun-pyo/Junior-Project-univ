@@ -147,4 +147,13 @@ export const postChangePassword = async (req, res) => {
   req.session.destroy();
   res.redirect("/login");
 };
-export const see = (req, res) => res.send("user Seee");
+export const see = async (req, res) => {
+  const { id } = req.params;
+  const user = await User.findById(id);
+  if (!user) {
+    return res
+      .status(404)
+      .render("404", { pageTitle: "User을 찾을 수 없습니다" });
+  }
+  return res.render("profile", { pageTitle: user.name, user });
+};

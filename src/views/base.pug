@@ -20,7 +20,7 @@ html(lang="en")
                     li 
                         a(href="/users/logout") LogOut
                     li 
-                        a(href="/profile") #{loggedInUser.name}의 프로필
+                        a(href=`/users/${loggedInUser._id}`) #{loggedInUser.name}의 프로필
                 else
                     li 
                         a(href="/join") Join

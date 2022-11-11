@@ -18,6 +18,6 @@ userRouter
   .get(getChangePassword)
   .post(postChangePassword);
 userRouter.get("/logout", protectorMiddleware, logout);
-userRouter.get("/:id(\\d+)", see);
+userRouter.get("/:id", see);
 
 export default userRouter;
