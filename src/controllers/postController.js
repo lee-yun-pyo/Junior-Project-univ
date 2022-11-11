@@ -29,17 +29,22 @@ export const getEdit = async (req, res) => {
 
 export const postEdit = async (req, res) => {
   const { id } = req.params;
-  const { title, description } = req.body;
-  const post = await Post.exists({ _id: id });
+  const {
+    body: { title, description },
+    file,
+  } = req;
+  const post = await Post.findById(id);
   if (!post) {
     res.status(404).render("404", { pageTitle: "Not Found" });
   }
   await Post.findByIdAndUpdate(id, {
+    imageUrl: file ? file.path : post.imageUrl,
     title,
     description,
   });
   res.redirect(`/posts/${id}`);
 };
+
 export const search = async (req, res) => {
   const { keyword } = req.query;
   let posts = [];
@@ -58,9 +63,13 @@ export const getUpload = (req, res) => {
 };
 
 export const postUpload = async (req, res) => {
-  const { title, description } = req.body;
+  const {
+    body: { title, description },
+    file,
+  } = req;
   try {
     await Post.create({
+      imageUrl: file.path,
       title,
       description,
     });

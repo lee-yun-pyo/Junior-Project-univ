@@ -33,6 +33,7 @@ app.use(
 
 app.use(localsMiddlewares);
 app.use("/", globalRouter);
+app.use("/uploads", express.static("uploads"));
 app.use("/users", userRouter);
 app.use("/posts", postRouter);
 
