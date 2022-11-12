@@ -7,7 +7,7 @@ block content
     br
     small 작성자 
         a(href=`/users/${post.owner._id}`)  #{post.owner.name}
-    h4 #{post.meta.views} 조회수
+    h4 #{post.views} 조회수
     if String(post.owner._id) === String(loggedInUser._id)
         a(href=`${post.id}/edit`) Edit &rarr;
         br

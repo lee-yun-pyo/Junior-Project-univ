@@ -108,6 +108,7 @@ export const deletePost = async (req, res) => {
     user: { _id },
   } = req.session;
   const post = await Post.findById(id);
+  const user = await User.findById(_id);
   if (!post) {
     res.status(404).render("404", { pageTitle: "Not Found Post" });
   }
@@ -115,5 +116,7 @@ export const deletePost = async (req, res) => {
     return res.status(403).redirect("/");
   }
   await Post.findByIdAndDelete(id);
+  user.posts.splice(user.posts.indexOf(id), 1);
+  user.save();
   res.redirect("/");
 };
