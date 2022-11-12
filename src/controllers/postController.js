@@ -21,9 +21,15 @@ export const watch = async (req, res) => {
 
 export const getEdit = async (req, res) => {
   const { id } = req.params;
+  const {
+    user: { _id },
+  } = req.session;
   const post = await Post.findById(id);
   if (!post) {
     res.status(404).render("404", { pageTitle: "Not Found" });
+  }
+  if (String(post.owner) !== String(_id)) {
+    return res.status(403).redirect("/");
   }
   res.render("edit", { pageTitle: `Edit`, post });
 };
@@ -31,12 +37,18 @@ export const getEdit = async (req, res) => {
 export const postEdit = async (req, res) => {
   const { id } = req.params;
   const {
+    user: { _id },
+  } = req.session;
+  const {
     body: { title, description },
     file,
   } = req;
   const post = await Post.findById(id);
   if (!post) {
     res.status(404).render("404", { pageTitle: "Not Found" });
+  }
+  if (String(post.owner) !== String(_id)) {
+    return res.status(403).redirect("/");
   }
   await Post.findByIdAndUpdate(id, {
     imageUrl: file ? file.path : post.imageUrl,
@@ -72,12 +84,15 @@ export const postUpload = async (req, res) => {
     file,
   } = req;
   try {
-    await Post.create({
+    const newPost = await Post.create({
       imageUrl: file.path,
       title,
       description,
       owner: _id,
     });
+    const user = await User.findById(_id);
+    user.posts.push(newPost._id);
+    user.save();
     res.redirect("/");
   } catch (error) {
     res.render("upload", {
@@ -89,6 +104,16 @@ export const postUpload = async (req, res) => {
 
 export const deletePost = async (req, res) => {
   const { id } = req.params;
+  const {
+    user: { _id },
+  } = req.session;
+  const post = await Post.findById(id);
+  if (!post) {
+    res.status(404).render("404", { pageTitle: "Not Found Post" });
+  }
+  if (String(post.owner) !== String(_id)) {
+    return res.status(403).redirect("/");
+  }
   await Post.findByIdAndDelete(id);
   res.redirect("/");
 };

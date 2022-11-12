@@ -1,1 +1,8 @@
 extends base
+include mixins/post
+
+block content 
+    each item in user.posts 
+        +post(item)
+    else 
+        li Sorry, this nothing

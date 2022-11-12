@@ -147,9 +147,10 @@ export const postChangePassword = async (req, res) => {
   req.session.destroy();
   res.redirect("/login");
 };
+
 export const see = async (req, res) => {
   const { id } = req.params;
-  const user = await User.findById(id);
+  const user = await User.findById(id).populate("posts");
   if (!user) {
     return res
       .status(404)
