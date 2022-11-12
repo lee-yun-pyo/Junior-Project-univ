@@ -34,6 +34,7 @@ app.use(
 app.use(localsMiddlewares);
 app.use("/", globalRouter);
 app.use("/uploads", express.static("uploads"));
+app.use("/static", express.static("assets"));
 app.use("/users", userRouter);
 app.use("/posts", postRouter);
 
