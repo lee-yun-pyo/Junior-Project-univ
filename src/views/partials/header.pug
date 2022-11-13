@@ -1,0 +1,22 @@
+header
+    a(href="/") 
+        i.fa-regular.fa-thumbs-up
+    h1=pageTitle
+    nav 
+        ul 
+            li 
+                a(href="/search") Search
+            if loggedIn
+                li 
+                    a(href="/posts/upload") Upload
+                li
+                    a(href="/users/edit") Edit Profile
+                li 
+                    a(href="/users/logout") LogOut
+                li 
+                    a(href=`/users/${loggedInUser._id}`) #{loggedInUser.name}의 프로필
+            else
+                li 
+                    a(href="/join") Join
+                li 
+                    a(href="/login") login

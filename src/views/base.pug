@@ -1,32 +1,12 @@
 doctype html
 html(lang="en")
   head
-    link(rel="stylesheet" href="https://unpkg.com/mvp.css")
+    link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css")
     link(rel="stylesheet" href="/static/css/styles.css")
     title #{pageTitle} | #{siteName}
+    script(src="https://kit.fontawesome.com/53d5fb5b1b.js" crossorigin="anonymous")
   body
-    header
-        h1=pageTitle
-        nav 
-            ul 
-                li
-                    a(href="/") Home
-                li 
-                    a(href="/search") Search
-                if loggedIn
-                    li 
-                        a(href="/posts/upload") Upload
-                    li
-                        a(href="/users/edit") Edit Profile
-                    li 
-                        a(href="/users/logout") LogOut
-                    li 
-                        a(href=`/users/${loggedInUser._id}`) #{loggedInUser.name}의 프로필
-                else
-                    li 
-                        a(href="/join") Join
-                    li 
-                        a(href="/login") login
+    include partials/header.pug
     main    
         block content
     include partials/footer.pug
