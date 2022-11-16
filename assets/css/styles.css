@@ -55,12 +55,196 @@ table {
   border-spacing: 0;
 }
 
+.post-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 20px 20px 20px;
+}
+.post-div .post-div_title {
+  margin-top: 10px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+header {
+  margin: 15px;
+}
+
+.header_nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header_title-div {
+  display: flex;
+  align-items: center;
+}
+.header_title-div .header_title-div_h1 {
+  margin-left: 10px;
+  font-size: 25px;
+}
+
+.header_ul {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.header_ul-li {
+  margin-left: 20px;
+  font-weight: 600;
+}
+
+footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+}
+footer .footer-p {
+  text-align: center;
+}
+
+.home {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+}
+.home h1 {
+  font-size: 40px;
+  font-weight: 700;
+}
+.home .home-post_div {
+  width: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.home-div {
+  width: 100%;
+  height: 100%;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.search-form {
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+.search-form .serarch-form_inputText {
+  padding: 10px 20px;
+  font-size: 20px;
+  outline: none;
+  border-bottom-left-radius: 10px;
+  border-top-left-radius: 10px;
+  width: 500px;
+  border: 2px solid rgba(0, 0, 0, 0.7);
+  border-right: none;
+}
+.search-form .search-form_submit {
+  padding: 10px;
+  font-size: 20px;
+  font-weight: 600;
+  border: none;
+  border-bottom-right-radius: 10px;
+  border-top-right-radius: 10px;
+  color: white;
+  outline: none;
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.login-entire_div {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 300px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 20px;
+  padding: 50px 25px;
+}
+.login-div .login-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.login-div .login-form .login-form_inputText {
+  font-size: 15px;
+  margin-bottom: 13px;
+  border-radius: 10px;
+  width: 100%;
+  padding: 10px;
+  outline: none;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+}
+.login-div .login-form .login-form_submit {
+  padding: 10px 15px;
+  font-weight: 600;
+  width: 70%;
+  border: none;
+  border-radius: 20px;
+  margin-top: 10px;
+  color: white;
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+.login-div .login-div_question {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.login-div .login-div_question a {
+  margin-left: 10px;
+  font-weight: 600;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.div_hr {
+  height: 1px;
+  background-color: rgba(0, 0, 0, 0.1);
+  width: 100%;
+  margin: 20px 0;
+}
+
+.upload-label {
+  margin-bottom: 13px;
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.edit-form_img {
+  margin-bottom: 15px;
+}
+
 a {
   color: inherit;
   text-decoration: none;
 }
 
 body {
+  height: 100vh;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-  background-color: pink;
 }

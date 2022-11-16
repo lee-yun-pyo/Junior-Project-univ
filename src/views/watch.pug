@@ -1,14 +1,19 @@
 extends base.pug
 
 block content
-    img(src="/"+post.imageUrl width=100 height=100)
-    p=post.description
-    small=post.createdAt
-    br
-    small 작성자 
-        a(href=`/users/${post.owner._id}`)  #{post.owner.name}
-    h4 #{post.views} 조회수
-    if String(post.owner._id) === String(loggedInUser._id)
-        a(href=`${post.id}/edit`) Edit &rarr;
+    div#postContainer(data-id=post._id)
+        img(src="/"+post.imageUrl width=100 height=100)
+        p=post.description
+        small=post.createdAt
         br
-        a(href=`${post.id}/delete`) Delete &rarr;
+        small 작성자 
+            a(href=`/users/${post.owner._id}`)  #{post.owner.name}
+        div
+            Button#likeBtn 
+                i#likeBtnIcon.fa-regular.fa-thumbs-up
+            span#likeSpan=post.thumbsup
+        h4 #{post.views} 조회수
+        if String(post.owner._id) === String(loggedInUser._id)
+            a(href=`${post.id}/edit`) Edit &rarr;
+            br
+            a(href=`${post.id}/delete`) Delete &rarr;

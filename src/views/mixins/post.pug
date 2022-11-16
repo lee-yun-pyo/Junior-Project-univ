@@ -1,7 +1,5 @@
 mixin post(info)
-    div 
-        h4 
-            a(href=`/posts/${info.id}`)=info.title
-        p=info.description
-        small=info.createdAt
-        hr
+    a(href=`/posts/${info.id}`)
+        div.post-div 
+            img(src="/" + info.imageUrl width=100 height=100)
+            h4.post-div_title=info.title
