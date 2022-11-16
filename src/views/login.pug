@@ -3,11 +3,13 @@ extends base
 block content 
     if errorMessage 
         p=errorMessage
-    form(method="POST")
-        input(name="id" placeholder="ID" type="text" required)
-        input(name="password" placeholder="Password" type="password" required)
-        input(value="Login" type="submit")
-    hr
-    div
-        span 계정이 없으신가요? 
-        a(href="/join") Join &rarr;
+    div.login-entire_div
+        div.login-div
+            form(method="POST").login-form
+                input(name="id" placeholder="ID" type="text" required).login-form_inputText
+                input(name="password" placeholder="Password" type="password" required).login-form_inputText
+                input(value="Login" type="submit").login-form_submit
+            div.div_hr 
+            div.login-div_question
+                span 계정이 없으신가요? 
+                a(href="/join") Join &rarr;

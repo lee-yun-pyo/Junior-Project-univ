@@ -3,13 +3,15 @@ extends base
 block content 
     if errorMessage 
         p=errorMessage
-    form(method="POST")
-        input(name="name" type="text" required:true placeholder="Name")
-        input(name="id" type="text" required:true placeholder="ID")
-        input(name="password" type="password" required:true placeholder="Password")
-        input(name="password2" type="password" required:true placeholder="Confirm Password")
-        input(type="submit" value="가입")
-    hr
-    div 
-        span 이미 계정이 있나요? 
-        a(href="/login") Login &rarr;
+    div.login-entire_div
+        div.login-div    
+            form(method="POST").login-form
+                input(name="name" type="text" required:true placeholder="Name").login-form_inputText
+                input(name="id" type="text" required:true placeholder="ID").login-form_inputText
+                input(name="password" type="password" required:true placeholder="Password").login-form_inputText
+                input(name="password2" type="password" required:true placeholder="Confirm Password").login-form_inputText
+                input(type="submit" value="가입").login-form_submit
+            div.div_hr 
+            div.login-div_question 
+                span 이미 계정이 있나요? 
+                a(href="/login") Login &rarr;

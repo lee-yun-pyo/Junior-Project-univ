@@ -1,8 +1,16 @@
 extends base
 include mixins/post
 
-block content 
-    each item in posts 
-        +post(item)
-    else 
-        li Sorry, this nothing
+block content
+    div.home
+        h1 Do You Know?
+        div.home-div
+            form(method="GET").search-form
+                input(name="keyword" type="text" placeholder="Do you know 검색").serarch-form_inputText
+                input(value="검색" type="submit").search-form_submit
+        div.home-post_div
+            each item in posts 
+                +post(item)
+            else 
+                li Sorry, this nothing
+
