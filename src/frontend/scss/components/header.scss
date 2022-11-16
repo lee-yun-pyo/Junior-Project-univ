@@ -1,0 +1,27 @@
+header {
+    margin: 15px;
+}
+.header_nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.header_title-div {
+    display: flex;
+    align-items: center;
+    .header_title-div_h1 {
+        margin-left: 10px;
+        font-size: 25px;
+    }
+}
+
+.header_ul {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.header_ul-li {
+    margin-left: 20px;
+    font-weight: 600;
+}
