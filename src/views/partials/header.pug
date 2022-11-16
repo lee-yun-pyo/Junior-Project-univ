@@ -1,22 +1,22 @@
 header
-    a(href="/") 
-        i.fa-regular.fa-thumbs-up
-    h1=pageTitle
-    nav 
-        ul 
-            li 
-                a(href="/search") Search
-            if loggedIn
-                li 
-                    a(href="/posts/upload") Upload
-                li
-                    a(href="/users/edit") Edit Profile
-                li 
-                    a(href="/users/logout") LogOut
-                li 
-                    a(href=`/users/${loggedInUser._id}`) #{loggedInUser.name}의 프로필
-            else
-                li 
-                    a(href="/join") Join
-                li 
-                    a(href="/login") login
+    nav.header_nav
+        div.header_title-div 
+            a(href="/") 
+                i.fa-regular.fa-thumbs-up
+            h1.header_title-div_h1=pageTitle
+        nav 
+            ul.header_ul 
+                if loggedIn
+                    li.header_ul-li 
+                        a(href="/posts/upload") Upload
+                    li.header_ul-li 
+                        a(href="/users/edit") Edit Profile
+                    li.header_ul-li  
+                        a(href="/users/logout") LogOut
+                    li.header_ul-li  
+                        a(href=`/users/${loggedInUser._id}`) #{loggedInUser.name}의 프로필
+                else
+                    li.header_ul-li  
+                        a(href="/join") Join
+                    li.header_ul-li  
+                        a(href="/login") login
