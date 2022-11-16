@@ -10,7 +10,10 @@ block content
             a(href=`/users/${post.owner._id}`)  #{post.owner.name}
         div
             Button#likeBtn 
-                i#likeBtnIcon.fa-regular.fa-thumbs-up
+                if (loggedInUser.likePosts.map(String).includes(String(post._id)))
+                    i#likeBtnIcon.fa-solid.fa-thumbs-up
+                else 
+                    i#likeBtnIcon.fa-regular.fa-thumbs-up
             span#likeSpan=post.thumbsup
         h4 #{post.views} 조회수
         if String(post.owner._id) === String(loggedInUser._id)

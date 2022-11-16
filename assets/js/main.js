@@ -7,8 +7,17 @@
  * If you are looking for production-ready output files, see mode: "production" (https://webpack.js.org/configuration/mode/).
  */
 /******/ (() => { // webpackBootstrap
-/******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
+
+/***/ "./src/frontend/js/likeBtn.js":
+/*!************************************!*\
+  !*** ./src/frontend/js/likeBtn.js ***!
+  \************************************/
+/***/ (() => {
+
+eval("const likeBtn = document.getElementById(\"likeBtn\");\nconst icon = document.getElementById(\"likeBtnIcon\");\nconst likeNumber = document.getElementById(\"likeSpan\");\n\nconst likeClick = () => {\n  const {\n    id\n  } = postContainer.dataset;\n  console.log(id);\n  let num = parseInt(likeNumber.innerText);\n\n  if (icon.classList.contains(\"fa-regular\")) {\n    icon.classList.remove(\"fa-regular\");\n    icon.classList.add(\"fa-solid\");\n    likeNumber.innerText = ++num;\n    fetch(`/api/posts/${id}/like`, {\n      method: \"POST\"\n    });\n  } else {\n    icon.classList.remove(\"fa-solid\");\n    icon.classList.add(\"fa-regular\");\n    likeNumber.innerText = --num;\n    fetch(`/api/posts/${id}/unlike`, {\n      method: \"POST\"\n    });\n  }\n}; // const handleEnded = () => {\n//   const { id } = postContainer.dataset;\n//   console.log(id);\n//   fetch(`/api/posts/${id}/like`, {\n//     method: \"POST\",\n//   });\n// };\n\n\nlikeBtn.addEventListener(\"click\", likeClick);\n\n//# sourceURL=webpack://junior-project-univ/./src/frontend/js/likeBtn.js?");
+
+/***/ }),
 
 /***/ "./src/frontend/js/main.js":
 /*!*********************************!*\
@@ -16,7 +25,8 @@
   \*********************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _scss_styles_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../scss/styles.scss */ \"./src/frontend/scss/styles.scss\");\n\n\n//# sourceURL=webpack://junior-project-univ/./src/frontend/js/main.js?");
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _scss_styles_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../scss/styles.scss */ \"./src/frontend/scss/styles.scss\");\n/* harmony import */ var _likeBtn__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./likeBtn */ \"./src/frontend/js/likeBtn.js\");\n/* harmony import */ var _likeBtn__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_likeBtn__WEBPACK_IMPORTED_MODULE_1__);\n\n\n\n//# sourceURL=webpack://junior-project-univ/./src/frontend/js/main.js?");
 
 /***/ }),
 
@@ -26,6 +36,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _scs
   \***************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extract-plugin\n\n\n//# sourceURL=webpack://junior-project-univ/./src/frontend/scss/styles.scss?");
 
 /***/ })
@@ -57,6 +68,35 @@ eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extr
 /******/ 	}
 /******/ 	
 /************************************************************************/
+/******/ 	/* webpack/runtime/compat get default export */
+/******/ 	(() => {
+/******/ 		// getDefaultExport function for compatibility with non-harmony modules
+/******/ 		__webpack_require__.n = (module) => {
+/******/ 			var getter = module && module.__esModule ?
+/******/ 				() => (module['default']) :
+/******/ 				() => (module);
+/******/ 			__webpack_require__.d(getter, { a: getter });
+/******/ 			return getter;
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/define property getters */
+/******/ 	(() => {
+/******/ 		// define getter functions for harmony exports
+/******/ 		__webpack_require__.d = (exports, definition) => {
+/******/ 			for(var key in definition) {
+/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
+/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
+/******/ 				}
+/******/ 			}
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
+/******/ 	(() => {
+/******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
+/******/ 	})();
+/******/ 	
 /******/ 	/* webpack/runtime/make namespace object */
 /******/ 	(() => {
 /******/ 		// define __esModule on exports

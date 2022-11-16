@@ -6,6 +6,7 @@ const userSchema = new mongoose.Schema({
   password: { type: String, required: true, trim: true },
   name: { type: String, required: true, trim: true, unique: true },
   posts: [{ type: mongoose.Schema.Types.ObjectId, ref: "Post" }],
+  likePosts: [{ type: mongoose.Schema.Types.ObjectId }],
 });
 
 userSchema.pre("save", async function () {

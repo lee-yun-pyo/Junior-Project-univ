@@ -120,3 +120,35 @@ export const deletePost = async (req, res) => {
   user.save();
   res.redirect("/");
 };
+
+export const registerView = async (req, res) => {
+  const {
+    session: {
+      user: { _id },
+    },
+    params: { id },
+  } = req;
+  const post = await Post.findById(id);
+  const user = await User.findById(_id);
+  if (!post) {
+    return res.sendStatus(404);
+  }
+  user.likePosts.push(post._id);
+  post.thumbsup = post.thumbsup + 1;
+  await post.save();
+  await user.save();
+  console.log("POST:::::::: ", post);
+  console.log("user.like POSTs:::::::", user.likePosts);
+  return res.sendStatus(200);
+};
+
+export const unRegisterView = async (req, res) => {
+  const { id } = req.params;
+  const post = await Post.findById(id);
+  if (!post) {
+    return res.sendStatus(404);
+  }
+  post.thumbsup = post.thumbsup - 1;
+  await post.save();
+  return res.sendStatus(200);
+};

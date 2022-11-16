@@ -6,6 +6,7 @@ import globalRouter from "./routers/globalRouter";
 import userRouter from "./routers/userRouter";
 import postRouter from "./routers/postRouter";
 import { localsMiddlewares } from "./middlewares";
+import apiRouter from "./routers/apiRouter";
 
 const app = express(); // express() 함수: express application 생성
 
@@ -37,5 +38,6 @@ app.use("/uploads", express.static("uploads"));
 app.use("/static", express.static("assets"));
 app.use("/users", userRouter);
 app.use("/posts", postRouter);
+app.use("/api", apiRouter);
 
 export default app;
