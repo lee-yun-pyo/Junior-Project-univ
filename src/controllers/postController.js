@@ -133,22 +133,33 @@ export const registerView = async (req, res) => {
   if (!post) {
     return res.sendStatus(404);
   }
-  user.likePosts.push(post._id);
-  post.thumbsup = post.thumbsup + 1;
+  user.likePosts.push(post._id); // User data 수정
+  post.thumbsup = post.thumbsup + 1; // Post data 수정
+  req.session.user.likePosts.push(post._id); // session data 수정
   await post.save();
   await user.save();
-  console.log("POST:::::::: ", post);
-  console.log("user.like POSTs:::::::", user.likePosts);
   return res.sendStatus(200);
 };
 
 export const unRegisterView = async (req, res) => {
-  const { id } = req.params;
+  const {
+    session: {
+      user: { _id },
+    },
+    params: { id },
+  } = req;
+  const user = await User.findById(_id);
   const post = await Post.findById(id);
   if (!post) {
     return res.sendStatus(404);
   }
-  post.thumbsup = post.thumbsup - 1;
+  user.likePosts.splice(user.likePosts.indexOf(id), 1); // User data 수정
+  post.thumbsup = post.thumbsup - 1; // Post data 수정
+  req.session.user.likePosts.splice(
+    req.session.user.likePosts.indexOf(post._id), // session data 수정
+    1
+  );
   await post.save();
+  await user.save();
   return res.sendStatus(200);
 };
