@@ -26,7 +26,17 @@ eval("const likeBtn = document.getElementById(\"likeBtn\");\nconst icon = docume
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _scss_styles_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../scss/styles.scss */ \"./src/frontend/scss/styles.scss\");\n/* harmony import */ var _likeBtn__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./likeBtn */ \"./src/frontend/js/likeBtn.js\");\n/* harmony import */ var _likeBtn__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_likeBtn__WEBPACK_IMPORTED_MODULE_1__);\n\n\n\n//# sourceURL=webpack://junior-project-univ/./src/frontend/js/main.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _scss_styles_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../scss/styles.scss */ \"./src/frontend/scss/styles.scss\");\n/* harmony import */ var _likeBtn__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./likeBtn */ \"./src/frontend/js/likeBtn.js\");\n/* harmony import */ var _likeBtn__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_likeBtn__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _views__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./views */ \"./src/frontend/js/views.js\");\n/* harmony import */ var _views__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_views__WEBPACK_IMPORTED_MODULE_2__);\n\n\n\n\n//# sourceURL=webpack://junior-project-univ/./src/frontend/js/main.js?");
+
+/***/ }),
+
+/***/ "./src/frontend/js/views.js":
+/*!**********************************!*\
+  !*** ./src/frontend/js/views.js ***!
+  \**********************************/
+/***/ (() => {
+
+eval("const postContainer = document.getElementById(\"postContainer\");\n\nconst viewsController = () => {\n  const {\n    postid\n  } = postContainer.dataset;\n  fetch(`/api/posts/${postid}/views`, {\n    method: \"POST\"\n  });\n};\n\nwindow.addEventListener(\"load\", viewsController);\n\n//# sourceURL=webpack://junior-project-univ/./src/frontend/js/views.js?");
 
 /***/ }),
 

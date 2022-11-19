@@ -163,3 +163,14 @@ export const unRegisterView = async (req, res) => {
   await user.save();
   return res.sendStatus(200);
 };
+
+export const viewsRegister = async (req, res) => {
+  const { id } = req.params;
+  const post = await Post.findById(id);
+  if (!post) {
+    return res.sendStatus(404);
+  }
+  post.views = post.views + 1;
+  await post.save();
+  return res.sendStatus(200);
+};
