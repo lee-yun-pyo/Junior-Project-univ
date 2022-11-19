@@ -1,12 +1,19 @@
 extends base
 include mixins/post
 
-block content 
-    form(method="GET")
-        input(name="keyword" type="text" placeholder="search a title")
-        input(value="search" type="submit")
+block content
+    div.home
+        section.search-section#searchSection
+            span.search-section_span Do you know 
+            form(method="GET").search-section_form#search-form
+                input(name="keyword" type="text" placeholder="").search-section_form-inputText#search-inputText
+                input(value="검색" type="submit").search-section_form-submit
+            span.search-section_span ?
+        div.home-post_div
+            each item in posts 
+                +post(item)
+            else 
+                span.postNothing-span#nothing-span 검색 결과가 없습니다. <br/> 다시 검색해주세요
 
-    each item in posts 
-        +post(item)
-    else 
-        li Sorry, this nothing
+block scripts
+    

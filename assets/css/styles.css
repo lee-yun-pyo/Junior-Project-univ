@@ -239,6 +239,46 @@ footer .footer-p {
   margin-bottom: 15px;
 }
 
+.search-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5em;
+  font-weight: 500;
+  margin-bottom: 30px;
+  width: 80%;
+  border-radius: 8px;
+  border: 1px solid #e9ecef;
+  background-color: #F8F9FA;
+  padding: 20px;
+}
+.search-section .search-section_span {
+  margin-right: 10px;
+  margin-left: 5px;
+}
+.search-section .search-section_form .search-section_form-inputText {
+  font: inherit;
+  border: 0;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.8);
+  text-align: center;
+  background: transparent;
+  outline: none;
+  width: 350px;
+}
+.search-section .search-section_form .search-section_form-submit {
+  display: none;
+}
+
+.postNothing-span {
+  border-radius: 8px;
+  border: 1px solid #e9ecef;
+  background-color: #F8F9FA;
+  width: 100%;
+  padding: 20px;
+  line-height: 1.4;
+  text-align: center;
+}
+
 a {
   color: inherit;
   text-decoration: none;
