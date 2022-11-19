@@ -10,10 +10,10 @@
         font-weight: 700;
     }
     .home-post_div {
-        width: 500px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
+        display: grid;
+        gap: 50px;
+        grid-template-columns: repeat(4, 1fr);
+        
     }
 }
 .home-div {

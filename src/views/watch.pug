@@ -8,19 +8,14 @@ block content
         p=post.description
         small=post.createdAt
         br
-        span 로그인 한 name: | #{loggedInUser.name}
-        br
-        span 로그인 한 사람이 좋아요 누른 것 | #{loggedInUser.likePosts}
-
-        br
         small 작성자 
             a(href=`/users/${post.owner._id}`)  #{post.owner.name}
         div
             Button#likeBtn 
                 if (loggedIn && loggedInUser.likePosts.map(String).includes(String(post._id)))
-                    i#likeBtnIcon.fa-solid.fa-thumbs-up
+                    i#likeBtnIcon.fa-solid.fa-heart
                 else 
-                    i#likeBtnIcon.fa-regular.fa-thumbs-up
+                    i#likeBtnIcon.fa-regular.fa-heart
             span#likeSpan=post.thumbsup
         h4 #{post.views + 1} 조회수
         if String(post.owner._id) === String(loggedInUser._id)

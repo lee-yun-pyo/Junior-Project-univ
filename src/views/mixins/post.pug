@@ -1,6 +1,14 @@
 mixin post(info)
     a(href=`/posts/${info.id}`)
         div.post-div 
-            img(src="/" + info.imageUrl width=100 height=100)
-            h4.post-div_title=info.title
-            span=info.views
+            div.post-photo
+                img(src="/" + info.imageUrl)
+            div.post-info
+                div.post-title_div
+                    p.post-title_p=info.title
+                div.post-info_meta
+                    p.post-info_meta-views #{info.views} 조회수
+                    div.post-info_meta-heart
+                        i.fa-solid.fa-heart
+                        span #{info.thumbsup}
+                
