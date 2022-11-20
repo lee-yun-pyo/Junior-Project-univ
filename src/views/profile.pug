@@ -1,8 +1,10 @@
 extends base
 include mixins/post
 
-block content 
-    each item in user.posts 
-        +post(item)
-    else 
-        li Sorry, this nothing
+block content
+    div.home
+        div.home-post_div
+            each item in user.posts 
+                +post(item)
+            else 
+                li Sorry, this nothing

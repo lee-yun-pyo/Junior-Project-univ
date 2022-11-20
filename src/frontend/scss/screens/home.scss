@@ -6,13 +6,27 @@
     padding: 30px;
 
     h1 {
+        margin-bottom: 40px;
+    }
+
+    .home-section {
+        margin-bottom: 35px;
+
+        .home-subtitle {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 25px;
+        }
+    }
+
+    h1 {
         font-size: 40px;
         font-weight: 700;
     }
     .home-post_div {
         display: grid;
         gap: 50px;
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(5, 1fr);
         
     }
 }

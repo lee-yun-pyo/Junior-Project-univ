@@ -155,13 +155,24 @@ footer .footer-p {
   padding: 30px;
 }
 .home h1 {
+  margin-bottom: 40px;
+}
+.home .home-section {
+  margin-bottom: 35px;
+}
+.home .home-section .home-subtitle {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 25px;
+}
+.home h1 {
   font-size: 40px;
   font-weight: 700;
 }
 .home .home-post_div {
   display: grid;
   gap: 50px;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(5, 1fr);
 }
 
 .home-div {

@@ -3,8 +3,15 @@ import User from "../models/User";
 
 export const home = async (req, res) => {
   try {
-    const posts = await Post.find({}).sort({ createdAt: "desc" });
-    res.render("home", { pageTitle: "home", posts });
+    const recentPosts = await Post.find({}).sort({ createdAt: "desc" });
+    const thumbsupPosts = await Post.find({}).sort({ thumbsup: "desc" });
+    const viewsPosts = await Post.find({}).sort({ views: "desc" });
+    res.render("home", {
+      pageTitle: "home",
+      recentPosts,
+      thumbsupPosts,
+      viewsPosts,
+    });
   } catch {
     res.render("server-error");
   }
