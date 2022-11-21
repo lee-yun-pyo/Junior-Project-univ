@@ -104,7 +104,20 @@ export const postEdit = async (req, res) => {
   req.session.user = updateUser;
   res.redirect("/users/edit");
 };
-export const remove = (req, res) => res.send("delete user");
+
+export const deleteUser = async (req, res) => {
+  const {
+    user: { _id },
+  } = req.session;
+  const user = await User.findById(_id);
+  if (String(user._id) !== String(_id)) {
+    return res.status(403).redirect("/");
+  }
+  await User.findByIdAndDelete(_id);
+  req.session.destroy();
+  res.redirect("/");
+};
+
 export const logout = (req, res) => {
   req.session.destroy();
   res.redirect("/");
