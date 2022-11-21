@@ -23,11 +23,16 @@
         font-size: 40px;
         font-weight: 700;
     }
+
     .home-post_div {
         display: grid;
         gap: 50px;
         grid-template-columns: repeat(5, 1fr);
-        
+    }
+    .search-post_div {
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 }
 .home-div {

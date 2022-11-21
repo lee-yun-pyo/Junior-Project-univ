@@ -1,27 +1,61 @@
 extends base.pug
 
 block content
-    span#notLogin 
-    p#p
     div#postContainer(data-userId=loggedInUser._id, data-postId=post._id)
-        img(src="/"+post.imageUrl width=100 height=100)
-        p=post.description
-        small=post.createdAt
-        br
-        small 작성자 
-            a(href=`/users/${post.owner._id}`)  #{post.owner.name}
-        div
-            Button#likeBtn 
-                if (loggedIn && loggedInUser.likePosts.map(String).includes(String(post._id)))
-                    i#likeBtnIcon.fa-solid.fa-heart
-                else 
-                    i#likeBtnIcon.fa-regular.fa-heart
-            span#likeSpan=post.thumbsup
-        h4 #{post.views + 1} 조회수
-        if String(post.owner._id) === String(loggedInUser._id)
-            a(href=`${post.id}/edit`) Edit &rarr;
-            br
-            a(href=`${post.id}/delete`) Delete &rarr;
+        div.main_content
+            div.box_postphoto
+                div.box_postphoto-info
+                    div.box_postphoto-info
+                        span.box_name #{post.title}
+                        div
+                            Button#likeBtn 
+                                if (loggedIn && loggedInUser.likePosts.map(String).includes(String(post._id)))
+                                    i#likeBtnIcon.fa-solid.fa-heart
+                                else 
+                                    i#likeBtnIcon.fa-regular.fa-heart
+                            span#likeSpan=post.thumbsup
+                    span.right  #{post.views + 1} 조회수
+                div.box_postphoto.center
+                    img.limit_picture(src="/"+post.imageUrl alt=post.title)
+        
+        div.main_content
+            div.box_content
+                p  every 
+                br
+                hr
+                if String(post.owner._id) === String(loggedInUser._id)
+                    a(href=`${post.id}/edit`).right Edit &rarr;
+                    br
+                    a(href=`${post.id}/delete`).right Delete &rarr;
+                br
+                br
+                br
+                span=post.createdAt
+                small.right 작성자 
+                    a(href=`/users/${post.owner._id}`)  #{post.owner.name}
+
+
+    //- span#notLogin 
+    //- p#p
+    //- div#postContainer(data-userId=loggedInUser._id, data-postId=post._id)
+    //-     img(src="/"+post.imageUrl width=100 height=100)
+    //-     p=post.description
+    //-     small=post.createdAt
+    //-     br
+    //-     small 작성자 
+    //-         a(href=`/users/${post.owner._id}`)  #{post.owner.name}
+    //-     div
+    //-         Button#likeBtn 
+    //-             if (loggedIn && loggedInUser.likePosts.map(String).includes(String(post._id)))
+    //-                 i#likeBtnIcon.fa-solid.fa-heart
+    //-             else 
+    //-                 i#likeBtnIcon.fa-regular.fa-heart
+    //-         span#likeSpan=post.thumbsup
+    //-     h4 #{post.views + 1} 조회수
+    //-     if String(post.owner._id) === String(loggedInUser._id)
+    //-         a(href=`${post.id}/edit`) Edit &rarr;
+    //-         br
+    //-         a(href=`${post.id}/delete`) Delete &rarr;
 block scripts 
     script(src="/static/js/likeBtn.js") 
     script(src="/static/js/views.js") 

@@ -6,9 +6,9 @@ header
             h1.header_title-div_h1=pageTitle
         nav 
             ul.header_ul 
+                li.header_ul-li 
+                    a(href="/search") 검색
                 if loggedIn
-                    li.header_ul-li 
-                        a(href="/posts/upload") Upload
                     li.header_ul-li 
                         a(href="/users/edit") Edit Profile
                     li.header_ul-li  
