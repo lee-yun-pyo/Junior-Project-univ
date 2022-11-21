@@ -14,7 +14,8 @@ block content
                 +post(item)
             else 
                 span.postNothing-span#nothing-span 검색 결과가 없습니다. <br/> 다시 검색해주세요
-                    a(href="/posts/upload") Upload
+                    if loggedIn
+                        a(href="/posts/upload") Upload
 
 block scripts
     

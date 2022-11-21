@@ -13,7 +13,7 @@
     width: 300px;
     border: 1px solid rgba(0,0,0,0.2);
     border-radius: 20px;
-    padding: 50px 25px;
+    padding: 40px 25px;
     .login-form {
         display: flex;
         flex-direction: column;
@@ -43,6 +43,7 @@
     }
     .login-div_question {
         display: flex;
+        flex-direction: column;
         align-items: center;
         justify-content: center;
         a {
@@ -50,6 +51,12 @@
             font-weight: 600;
             text-decoration: underline;
             cursor: pointer;
+            margin-top: 20px;
+        }
+
+        #deleteProfile {
+            text-decoration: none;
+            color: rgb(228, 27, 27);
         }
     }
 }

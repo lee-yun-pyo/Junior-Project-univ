@@ -2,9 +2,11 @@ extends base
 include mixins/post
 
 block content
-    div.home
-        div.home-post_div
-            each item in user.posts 
-                +post(item)
-            else 
-                li Sorry, this nothing
+    div.home          
+        section.home-section
+            p.home-subtitle #{user.name} 유저가 업로드한 게시글
+            div.home-post_div
+                each item in user.posts 
+                    +post(item)
+                else 
+                    p 업로드한 영상이 없습니다
