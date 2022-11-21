@@ -299,76 +299,94 @@ footer .footer-p {
   margin-bottom: 15px;
 }
 
-#postContainer {
-  display: block;
-  min-height: 35rem;
-  border-left: 1px solid #ccc;
-  border-right: 1px solid #ccc;
-  margin: 1rem auto;
-  max-width: 1300px;
-}
-
-.main_content {
+#watchDiv {
   display: flex;
-  flex: 1;
   justify-content: center;
+}
+
+#postContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 30px;
+  width: 600px;
+}
+#postContainer .watchImage-div {
+  width: 600px;
+  height: 480px;
+  overflow: hidden;
+  position: relative;
+  margin-bottom: 15px;
+}
+#postContainer .watchImage-div .watchImage {
+  height: 100%;
+  position: relative;
+  left: 2.3%;
+  width: auto;
+  border-radius: 15px;
+}
+#postContainer .watchDescription {
+  font-size: 19px;
+}
+#postContainer hr {
+  color: rgba(0, 0, 0, 0.5);
+  size: 1px;
+  width: 100%;
+  margin: 20px 0;
+}
+
+.watchInfo {
+  display: flex;
   align-items: center;
-  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 20px;
 }
-
-.box_postphoto {
-  max-width: 700px;
-  display: block;
-  flex: 1;
-}
-
-.box_postphoto-info {
+.watchInfo .watchInfo-div {
   display: flex;
   align-items: center;
 }
-
-.box_name {
-  margin-right: 20px;
+.watchInfo .watchInfo-div .watchInfo-title {
+  font-size: 30px;
+  font-weight: 600;
+  margin-right: 10px;
 }
-
-.right {
-  float: right;
+.watchInfo .watchInfo-div .watchInfo-heart {
+  display: flex;
+  align-items: center;
 }
-
-.btn-like {
-  color: transparent;
-  text-shadow: 0 0 2px rgba(255, 255, 255, 0.7), 0 0 0 #000;
-}
-
-.btn-like:hover {
-  cursor: pointer;
-}
-
-.btn-like.done {
-  color: inherit;
-  text-shadow: 0;
-}
-
-.limit_picture {
-  max-width: 700px;
-  height: auto;
-}
-
-.center {
-  text-align: center;
-}
-
-.box_content {
-  display: block;
-  flex: 1;
-  max-width: 900px;
-}
-
-#likeBtnIcon {
+.watchInfo .watchInfo-div .watchInfo-heart button {
+  margin-right: 2px;
   background-color: transparent;
-  color: red;
+  color: #ED4956;
   outline: 0;
   border: 0;
+  cursor: pointer;
+}
+.watchInfo .watchInfo-div .watchInfo-heart span {
+  font-size: 22px;
+}
+.watchInfo .watchInfo-views {
+  font-size: 20px;
+}
+
+.watchSubInfo .watchSubInfo-div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 40px;
+}
+.watchSubInfo .watchSubInfo-div .watchSubInfo-owner {
+  font-size: 18px;
+}
+.watchSubInfo .watchSubInfo-div .watchSubInfo-owner a {
+  font-size: 20px;
+  font-weight: 600;
+}
+.watchSubInfo .watchSubInfo-div .watchSubInfo-btns a {
+  border-radius: 5px;
+  padding: 8px 10px;
+  background-color: rgba(0, 0, 0, 0.1);
+  margin-left: 10px;
 }
 
 .search-section {
