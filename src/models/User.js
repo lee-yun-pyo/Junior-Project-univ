@@ -7,6 +7,7 @@ const userSchema = new mongoose.Schema({
   name: { type: String, required: true, trim: true, unique: true },
   posts: [{ type: mongoose.Schema.Types.ObjectId, ref: "Post" }],
   likePosts: [{ type: mongoose.Schema.Types.ObjectId }],
+  comments: [{ type: mongoose.Schema.Types.ObjectId, ref: "Comment" }],
 });
 
 userSchema.pre("save", async function () {

@@ -7,6 +7,9 @@ const postSchema = new mongoose.Schema({
   createdAt: { type: Date, required: true, default: Date.now },
   views: { type: Number, required: true, default: 0 },
   thumbsup: { type: Number, required: true, default: 0 },
+  comments: [
+    { type: mongoose.Schema.Types.ObjectId, required: true, ref: "Comment" },
+  ],
   owner: { type: mongoose.Schema.Types.ObjectId, required: true, ref: "User" },
   // 사진, 일일조회수, 작성자 아이디
 });
