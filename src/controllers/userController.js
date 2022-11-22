@@ -44,7 +44,7 @@ export const getLogin = (req, res) =>
 
 export const postLogin = async (req, res) => {
   const { id, password } = req.body;
-  const pageTitle = "Login";
+  const pageTitle = "로그인";
   // * ID 있는지 확인
   // 비번 확인
   const user = await User.findOne({ id }); // 있으면 object 반환 없으면 null
@@ -65,7 +65,7 @@ export const postLogin = async (req, res) => {
   return res.redirect("/");
 };
 export const getEdit = (req, res) => {
-  res.render("edit-profile", { pageTitle: "Edit Profile" });
+  res.render("edit-profile", { pageTitle: "프로필 수정" });
 };
 export const postEdit = async (req, res) => {
   const {
@@ -74,6 +74,7 @@ export const postEdit = async (req, res) => {
       user: { _id },
     },
   } = req;
+  const pageTitle = "Edit Profile";
   const nowUser = await User.findById({ _id });
   if (name === nowUser.name && id === nowUser.id) {
     return res.status(400).render("edit-profile", {
@@ -81,7 +82,6 @@ export const postEdit = async (req, res) => {
       errorMessage: "Name 또는 ID를 변경하세요",
     });
   }
-  const pageTitle = "Edit Profile";
   const nameExists = await User.exists({ name });
   const idExists = await User.exists({ id });
   if (nameExists) {

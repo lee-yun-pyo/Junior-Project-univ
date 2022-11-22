@@ -7,7 +7,7 @@ export const home = async (req, res) => {
     const thumbsupPosts = await Post.find({}).sort({ thumbsup: "desc" });
     const viewsPosts = await Post.find({}).sort({ views: "desc" });
     res.render("home", {
-      pageTitle: "home",
+      pageTitle: "Do you know",
       recentPosts,
       thumbsupPosts,
       viewsPosts,
@@ -21,9 +21,9 @@ export const watch = async (req, res) => {
   const { id } = req.params;
   const post = await Post.findById(id).populate("owner");
   if (!post) {
-    res.status(404).render("404", { pageTitle: "Not Found" });
+    res.status(404).render("404", { pageTitle: "" });
   }
-  res.render("watch", { pageTitle: post.title, post });
+  res.render("watch", { pageTitle: "Do you know", post });
 };
 
 export const getEdit = async (req, res) => {
@@ -33,12 +33,12 @@ export const getEdit = async (req, res) => {
   } = req.session;
   const post = await Post.findById(id);
   if (!post) {
-    res.status(404).render("404", { pageTitle: "Not Found" });
+    res.status(404).render("404", { pageTitle: "" });
   }
   if (String(post.owner) !== String(_id)) {
     return res.status(403).redirect("/");
   }
-  res.render("edit", { pageTitle: `Edit`, post });
+  res.render("edit", { pageTitle: "게시글 수정", post });
 };
 
 export const postEdit = async (req, res) => {
@@ -52,7 +52,7 @@ export const postEdit = async (req, res) => {
   } = req;
   const post = await Post.findById(id);
   if (!post) {
-    res.status(404).render("404", { pageTitle: "Not Found" });
+    res.status(404).render("404", { pageTitle: "" });
   }
   if (String(post.owner) !== String(_id)) {
     return res.status(403).redirect("/");
@@ -75,11 +75,11 @@ export const search = async (req, res) => {
       },
     });
   }
-  res.render("search", { pageTitle: "Search Post", posts });
+  res.render("search", { pageTitle: "Do you know", posts });
 };
 
 export const getUpload = (req, res) => {
-  res.render("upload", { pageTitle: "Upload Post" });
+  res.render("upload", { pageTitle: "글 올리기" });
 };
 
 export const postUpload = async (req, res) => {
@@ -103,7 +103,7 @@ export const postUpload = async (req, res) => {
     res.redirect("/");
   } catch (error) {
     res.render("upload", {
-      pageTitle: "Upload Post",
+      pageTitle: "글 올리기",
       errorMessage: error._message,
     });
   }
@@ -117,7 +117,7 @@ export const deletePost = async (req, res) => {
   const post = await Post.findById(id);
   const user = await User.findById(_id);
   if (!post) {
-    res.status(404).render("404", { pageTitle: "Not Found Post" });
+    res.status(404).render("404", { pageTitle: "" });
   }
   if (String(post.owner) !== String(_id)) {
     return res.status(403).redirect("/");

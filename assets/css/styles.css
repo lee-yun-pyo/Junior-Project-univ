@@ -121,9 +121,10 @@ header {
   display: flex;
   align-items: center;
 }
-.header_title-div .header_title-div_h1 {
+.header_title-div .header_title-div_span {
   margin-left: 10px;
-  font-size: 25px;
+  font-size: 20px;
+  font-weight: 600;
 }
 
 .header_ul {
