@@ -1,11 +1,14 @@
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const path = require("path");
 
+const BASE_JS = "./src/frontend/js/";
+
 module.exports = {
   entry: {
-    main: "./src/frontend/js/main.js",
-    likeBtn: "./src/frontend/js/likeBtn",
-    views: "./src/frontend/js/views",
+    main: BASE_JS + "main.js",
+    likeBtn: BASE_JS + "likeBtn",
+    views: BASE_JS + "views",
+    commentSection: BASE_JS + "commentSection",
   }, // entry 처리하고자 하는 파일
   mode: "development", // 가공된 js파일이 개발하기 편하게 정리 (원래 한줄 코드: production)
   watch: true, // 자동으로 webpack은 해석 된 파일의 변경 사항을 계속 감시

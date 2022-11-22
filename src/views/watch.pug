@@ -28,8 +28,16 @@ block content
                             a(href=`${post.id}/edit`) 수정
                             a(href=`${post.id}/delete`) 삭제
                 span.watchSubInfo-date=post.createdAt
+            
+            if loggedIn
+                div.post__comments
+                    form.post__comments-form#commentForm
+                        textarea(name="", cols="30", rows="10")
+                        button 작성
                 
             
 block scripts 
     script(src="/static/js/likeBtn.js") 
-    script(src="/static/js/views.js") 
+    script(src="/static/js/views.js")
+    if loggedIn 
+        script(src="/static/js/commentSection.js")

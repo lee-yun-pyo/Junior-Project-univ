@@ -181,3 +181,5 @@ export const viewsRegister = async (req, res) => {
   await post.save();
   return res.sendStatus(200);
 };
+
+export const createComment = async (req, res) => {};
