@@ -7,11 +7,15 @@ const handleSubmit = (event) => {
   event.preventDefault();
   const { postid } = postContainer.dataset;
   const text = textArea.value;
+  if (text.trim() === "") {
+    return;
+  }
   fetch(`/api/posts/${postid}/comment`, {
     method: "POST",
-    body: {
-      text,
+    headers: {
+      "Content-Type": "application/json",
     },
+    body: JSON.stringify({ text }),
   });
 };
 

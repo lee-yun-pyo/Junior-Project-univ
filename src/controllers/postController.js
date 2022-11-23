@@ -182,4 +182,8 @@ export const viewsRegister = async (req, res) => {
   return res.sendStatus(200);
 };
 
-export const createComment = async (req, res) => {};
+export const createComment = async (req, res) => {
+  console.log("❎✳✳✳✅", req.params);
+  console.log("✅✳✳✅❎❎✳", req.body);
+  return res.end();
+};
