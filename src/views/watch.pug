@@ -30,11 +30,16 @@ block content
                 span.watchSubInfo-date=post.createdAt
             
             if loggedIn
-                div.post__comments
+                div.post__add-comments
                     form.post__comments-form#commentForm
                         textarea(name="", cols="30", rows="10")
                         button 작성
-                
+            div.post__comments
+                ul
+                    each comment in post.comments.reverse()
+                        li.post__comment
+                            span #{comment.text}
+
             
 block scripts 
     script(src="/static/js/likeBtn.js") 

@@ -1,5 +1,6 @@
 import Post from "../models/Post";
 import User from "../models/User";
+import Comment from "../models/Comment";
 
 export const home = async (req, res) => {
   try {
@@ -19,7 +20,7 @@ export const home = async (req, res) => {
 
 export const watch = async (req, res) => {
   const { id } = req.params;
-  const post = await Post.findById(id).populate("owner");
+  const post = await Post.findById(id).populate("owner").populate("comments");
   if (!post) {
     res.status(404).render("404", { pageTitle: "" });
   }
@@ -183,7 +184,21 @@ export const viewsRegister = async (req, res) => {
 };
 
 export const createComment = async (req, res) => {
-  console.log("❎✳✳✳✅", req.params);
-  console.log("✅✳✳✅❎❎✳", req.body);
-  return res.end();
+  const {
+    body: { text },
+    session: { user },
+    params: { id },
+  } = req;
+  const post = await Post.findById(id);
+  if (!post) {
+    return res.sendStatus(404);
+  }
+  const comment = await Comment.create({
+    text,
+    owner: user._id,
+    post: id,
+  });
+  post.comments.push(comment._id);
+  post.save();
+  return res.sendStatus(201); // 201: Created
 };
