@@ -131,6 +131,7 @@
     }
 }
 .watchSubInfo {
+    margin-bottom: 30px;
     .watchSubInfo-div {
         display: flex;
         align-items: center;
@@ -153,7 +154,41 @@
         }
     }
 }
-
+.post__add-comments {
+    margin-bottom: 20px;
+    span {
+        font-size: 17px;
+    }
+    .post__comments-form {
+        display: flex;
+        align-items: center;
+        margin-top: 15px;
+        textarea {
+            padding: 10px 8px;
+            width: 515px;
+            height: 30px;
+            resize: none;
+            outline: none;
+            border-radius: 7px;
+            font-family: inherit;
+            font-weight: 600;
+            border: 2px solid rgba(0, 0, 0, 0.3);  
+            &:focus {
+                border: 2px solid $heart;  
+            }
+        }
+        button {
+            margin-left: auto;
+            padding: 15px 20px;
+            font-size: 20px;
+            border-radius: 10px;
+            border:none;
+            cursor: pointer;
+            color: #ffffff;
+            background-color: $heart;
+        }
+    }
+}
 .post__comments {
     display: flex;
     flex-direction: column;
@@ -167,5 +202,25 @@
         font-size: 16px;
         color: white;
         background-color: rgba(0, 71, 160, 0.7);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        span {
+            padding: 5px 0;
+        }
+        .post__comment-btn  {
+            button {
+                background-color: transparent;
+                margin-left: 10px;
+                border: none;
+                cursor: pointer;
+                padding: 5px;
+                &:hover {
+                    border-radius: 50%;
+                    background-color: rgba(255, 255, 255, 0.5);
+                }
+            }
+
+        }
     }
 }

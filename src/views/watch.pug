@@ -31,15 +31,22 @@ block content
             
             if loggedIn
                 div.post__add-comments
+                    span 댓글 #{post.comments.length}개
                     form.post__comments-form#commentForm
-                        textarea(name="", cols="30", rows="10")
-                        button 작성
+                        textarea(name="", cols="30", rows="10" placeholder="댓글을 입력해주세요")
+                        button
+                            i.fa-sharp.fa-solid.fa-paper-plane
             div.post__comments
                 ul
                     each comment in post.comments.reverse()
                         li.post__comment
                             span #{comment.text}
-
+                            if (loggedIn && String(comment.owner) === String(loggedInUser._id))
+                                div.post__comment-btn 
+                                    button
+                                        i.fa-regular.fa-pen-to-square
+                                    button
+                                        i.fa-solid.fa-trash-can 
             
 block scripts 
     script(src="/static/js/likeBtn.js") 

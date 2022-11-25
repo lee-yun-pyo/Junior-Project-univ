@@ -364,6 +364,9 @@ footer .footer-p {
   font-size: 20px;
 }
 
+.watchSubInfo {
+  margin-bottom: 30px;
+}
 .watchSubInfo .watchSubInfo-div {
   display: flex;
   align-items: center;
@@ -384,6 +387,42 @@ footer .footer-p {
   margin-left: 10px;
 }
 
+.post__add-comments {
+  margin-bottom: 20px;
+}
+.post__add-comments span {
+  font-size: 17px;
+}
+.post__add-comments .post__comments-form {
+  display: flex;
+  align-items: center;
+  margin-top: 15px;
+}
+.post__add-comments .post__comments-form textarea {
+  padding: 10px 8px;
+  width: 515px;
+  height: 30px;
+  resize: none;
+  outline: none;
+  border-radius: 7px;
+  font-family: inherit;
+  font-weight: 600;
+  border: 2px solid rgba(0, 0, 0, 0.3);
+}
+.post__add-comments .post__comments-form textarea:focus {
+  border: 2px solid #ED4956;
+}
+.post__add-comments .post__comments-form button {
+  margin-left: auto;
+  padding: 15px 20px;
+  font-size: 20px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  color: #ffffff;
+  background-color: #ED4956;
+}
+
 .post__comments {
   display: flex;
   flex-direction: column;
@@ -398,6 +437,23 @@ footer .footer-p {
   font-size: 16px;
   color: white;
   background-color: rgba(0, 71, 160, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.post__comments .post__comment span {
+  padding: 5px 0;
+}
+.post__comments .post__comment .post__comment-btn button {
+  background-color: transparent;
+  margin-left: 10px;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+}
+.post__comments .post__comment .post__comment-btn button:hover {
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.5);
 }
 
 .search-section {
