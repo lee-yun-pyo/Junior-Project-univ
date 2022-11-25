@@ -27,15 +27,14 @@ block content
                         if String(post.owner._id) === String(loggedInUser._id)
                             a(href=`${post.id}/edit`) 수정
                             a(href=`${post.id}/delete`) 삭제
-                span.watchSubInfo-date=post.createdAt
+                span.watchSubInfo-date=compactDate
             
-            if loggedIn
-                div.post__add-comments
-                    span 댓글 #{post.comments.length}개
-                    form.post__comments-form#commentForm
-                        textarea(name="", cols="30", rows="10" placeholder="댓글을 입력해주세요")
-                        button
-                            i.fa-sharp.fa-solid.fa-paper-plane
+            div.post__add-comments
+                span 댓글 #{post.comments.length}개
+                form.post__comments-form#commentForm
+                    textarea(name="", cols="30", rows="10" placeholder="댓글을 입력해주세요")
+                    button
+                        i.fa-sharp.fa-solid.fa-paper-plane
             div.post__comments
                 ul
                     each comment in post.comments.reverse()

@@ -5,24 +5,26 @@ block content
     div.home
         h1 Do You Know?
         section.home-section
-            p.home-subtitle 최다 조회수
+            p.home-subtitle ✅ 최다 조회수
             div.home-post_div
                 each item in viewsPosts.slice(0, 5) 
                     +post(item)
                 else 
-                    li Sorry, this nothing
+                    span 게시글이 없습니다
+            hr
         section.home-section
-            p.home-subtitle 최다 좋아요
+            p.home-subtitle ✅ 최다 좋아요
             div.home-post_div
                 each item in thumbsupPosts.slice(0, 5) 
                     +post(item)
                 else 
-                    li Sorry, this nothing
+                    span 게시글이 없습니다
+            hr
         section.home-section
-            p.home-subtitle 최신 업로드
+            p.home-subtitle ✅ 최신 업로드
             div.home-post_div
                 each item in recentPosts.slice(0, 5) 
                     +post(item)
                 else 
-                    li Sorry, this nothing
+                    span 게시글이 없습니다
 

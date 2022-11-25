@@ -7,6 +7,6 @@ block content
                 img(src="/"+post.imageUrl width=200 height=200).edit-form_img
                 label(for="image").upload-label 이미지 첨부
                 input(type="file" id="image" name="image" accept="image/*").login-form_inputText
-                input(name="title" placeholder="title change", value=post.title, required).login-form_inputText
+                span.editPost__form-title #{post.title}
                 input(name="description" type="text" value=post.description placeholder="Description" required).login-form_inputText
                 input(value="Edit" type="submit").login-form_submit

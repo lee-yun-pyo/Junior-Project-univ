@@ -10,8 +10,6 @@
     }
 
     .home-section {
-        margin-bottom: 35px;
-
         .home-subtitle {
             font-size: 20px;
             font-weight: 600;
@@ -33,6 +31,11 @@
         display: flex;
         align-items: center;
         justify-content: center;
+    }
+    hr {
+        background-color: rgba(255,255,255,0.1);
+        width: 100%;
+        margin: 30px 0;
     }
 }
 .home-div {

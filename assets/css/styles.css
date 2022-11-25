@@ -159,9 +159,6 @@ footer .footer-p {
 .home h1 {
   margin-bottom: 40px;
 }
-.home .home-section {
-  margin-bottom: 35px;
-}
 .home .home-section .home-subtitle {
   font-size: 20px;
   font-weight: 600;
@@ -180,6 +177,11 @@ footer .footer-p {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+.home hr {
+  background-color: rgba(255, 255, 255, 0.1);
+  width: 100%;
+  margin: 30px 0;
 }
 
 .home-div {
@@ -265,6 +267,11 @@ footer .footer-p {
   color: white;
   cursor: pointer;
   background-color: rgba(0, 0, 0, 0.7);
+}
+.login-div .login-form .editPost__form-title {
+  margin-bottom: 15px;
+  font-size: 20px;
+  font-weight: 600;
 }
 .login-div .login-div_question {
   display: flex;
@@ -385,6 +392,9 @@ footer .footer-p {
   padding: 8px 10px;
   background-color: rgba(0, 0, 0, 0.1);
   margin-left: 10px;
+}
+.watchSubInfo .watchSubInfo-date {
+  font-weight: 600;
 }
 
 .post__add-comments {

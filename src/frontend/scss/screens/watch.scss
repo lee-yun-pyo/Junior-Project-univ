@@ -1,74 +1,3 @@
-// #postContainer{
-//     display: block;
-//     min-height: 35rem;
-//     border-left: 1px solid #ccc;
-//     border-right: 1px solid #ccc;
-//     margin : 1rem auto;
-//     max-width: 1300px;
-// }
-
-// .main_content{
-//     display: flex;
-//     flex:1;
-//     justify-content: center;
-//     align-items: center;
-//     flex-direction: row;
-// }
-
-// .box_postphoto{
-//     max-width: 700px;
-//     display:block;
-//     flex:1;
-// }
-// .box_postphoto-info {
-//     display: flex;
-//     align-items: center;
-// }
-
-// .box_name{
-//     margin-right: 20px;
-// }
-
-// .right{
-//     float:right;
-// }
-
-// .btn-like {
-//     color: transparent;
-//     text-shadow: 0 0 2px rgba(255,255,255,.7), 0 0 0 #000;
-// }
-// .btn-like:hover {
-//     cursor:pointer;
-// }
-// .btn-like.done {
-//     color: inherit;
-//     text-shadow: 0;
-// }
-
-// .limit_picture{
-//     max-width: 700px;
-//     height: auto;
-// }
-
-// .center{
-//     text-align: center;
-// }
-
-
-
-// .box_content{
-//     display: block;
-//     flex: 1;
-//     max-width:900px;
-// }
-
-// #likeBtnIcon {
-//     background-color: transparent;
-//     color: red;
-//     outline: 0;
-//     border: 0;
-// }
-
 #watchDiv {
     display: flex;
     justify-content: center;
@@ -152,6 +81,9 @@
                 margin-left: 10px;
             }
         }
+    }
+    .watchSubInfo-date {
+        font-weight: 600;
     }
 }
 .post__add-comments {

@@ -21,10 +21,27 @@ export const home = async (req, res) => {
 export const watch = async (req, res) => {
   const { id } = req.params;
   const post = await Post.findById(id).populate("owner").populate("comments");
+  const date = String(post.createdAt).split(" ").slice(1, 4);
+  const monthObj = {
+    Jan: "01",
+    Feb: "02",
+    Mar: "03",
+    Apr: "04",
+    May: "05",
+    Jun: "06",
+    Jul: "07",
+    Aug: "08",
+    Sep: "09",
+    Oct: "10",
+    Nov: "11",
+    Dec: "12",
+  };
+  const month = monthObj[date[0]];
+  const compactDate = date[2] + "." + month + "." + date[1] + ".";
   if (!post) {
     res.status(404).render("404", { pageTitle: "" });
   }
-  res.render("watch", { pageTitle: "Do you know", post });
+  res.render("watch", { pageTitle: "Do you know", post, compactDate });
 };
 
 export const getEdit = async (req, res) => {
