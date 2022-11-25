@@ -53,9 +53,9 @@ export const getEdit = async (req, res) => {
   if (!post) {
     res.status(404).render("404", { pageTitle: "" });
   }
-  if (String(post.owner) !== String(_id)) {
-    return res.status(403).redirect("/");
-  }
+  // if (String(post.owner) !== String(_id)) {
+  //   return res.status(403).redirect("/");
+  // }
   res.render("edit", { pageTitle: "게시글 수정", post });
 };
 
@@ -72,9 +72,9 @@ export const postEdit = async (req, res) => {
   if (!post) {
     res.status(404).render("404", { pageTitle: "" });
   }
-  if (String(post.owner) !== String(_id)) {
-    return res.status(403).redirect("/");
-  }
+  // if (String(post.owner) !== String(_id)) {
+  //   return res.status(403).redirect("/");
+  // }
   await Post.findByIdAndUpdate(id, {
     imageUrl: file ? file.path : post.imageUrl,
     title,

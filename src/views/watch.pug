@@ -24,9 +24,10 @@ block content
                     span.watchSubInfo-owner 최초 작성자 
                         a(href=`/users/${post.owner._id}`)  #{post.owner.name}
                     div.watchSubInfo-btns
-                        if String(post.owner._id) === String(loggedInUser._id)
+                        if loggedIn
                             a(href=`${post.id}/edit`) 수정
-                            a(href=`${post.id}/delete`) 삭제
+                            if String(post.owner._id) === String(loggedInUser._id)
+                                a(href=`${post.id}/delete`) 삭제
                 span.watchSubInfo-date=compactDate
             
             div.post__add-comments
