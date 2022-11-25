@@ -2,6 +2,16 @@ const postContainer = document.getElementById("postContainer");
 const form = document.getElementById("commentForm");
 const textArea = form.querySelector("textarea");
 const btn = form.querySelector("button");
+const loginSpan = document.getElementById("notLogin");
+
+const { postid, userid } = postContainer.dataset;
+if (userid === undefined) {
+  textArea.placeholder = "로그인 후 이용하세요";
+  textArea.setAttribute("disabled", true);
+  btn.setAttribute("disabled", true);
+  btn.setAttribute("style", "background-color: rgba(0,0,0,0.1);");
+  // flash Message
+}
 
 const addComment = (text) => {
   const postComments = document.querySelector(".post__comments ul");
@@ -28,21 +38,25 @@ const addComment = (text) => {
 
 const handleSubmit = async (event) => {
   event.preventDefault();
-  const { postid } = postContainer.dataset;
-  const text = textArea.value;
-  if (text.trim() === "") {
-    return;
-  }
-  const { status } = await fetch(`/api/posts/${postid}/comment`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ text }),
-  });
-  textArea.value = "";
-  if (status === 201) {
-    addComment(text);
+  if (userid === undefined) {
+    loginSpan.innerText = "로그인 후 이용하세요";
+    // flash Message
+  } else {
+    const text = textArea.value;
+    if (text.trim() === "") {
+      return;
+    }
+    const { status } = await fetch(`/api/posts/${postid}/comment`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ text }),
+    });
+    textArea.value = "";
+    if (status === 201) {
+      addComment(text);
+    }
   }
 };
 

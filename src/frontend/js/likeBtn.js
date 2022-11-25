@@ -10,6 +10,7 @@ const likeClick = () => {
   if (icon.classList.contains("fa-regular")) {
     if (userid === undefined) {
       loginSpan.innerText = "로그인 후 이용하세요";
+      // flash Message
     } else {
       icon.classList.remove("fa-regular");
       icon.classList.add("fa-solid");
