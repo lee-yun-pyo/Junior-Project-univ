@@ -217,5 +217,5 @@ export const createComment = async (req, res) => {
   });
   post.comments.push(comment._id);
   post.save();
-  return res.sendStatus(201); // 201: Created
+  return res.status(201).json({ newCommentId: comment._id }); // 201: Created
 };

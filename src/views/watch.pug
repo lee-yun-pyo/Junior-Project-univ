@@ -39,13 +39,13 @@ block content
             div.post__comments
                 ul
                     each comment in post.comments.reverse()
-                        li.post__comment
+                        li.post__comment(data-commentId=comment._id)
                             span #{comment.text}
                             if (loggedIn && String(comment.owner) === String(loggedInUser._id))
                                 div.post__comment-btn 
-                                    button
+                                    button#comment__edit-btn
                                         i.fa-regular.fa-pen-to-square
-                                    button
+                                    button#comment__delete-btn
                                         i.fa-solid.fa-trash-can 
             
 block scripts 

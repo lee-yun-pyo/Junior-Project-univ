@@ -3,6 +3,8 @@ const form = document.getElementById("commentForm");
 const textArea = form.querySelector("textarea");
 const btn = form.querySelector("button");
 const loginSpan = document.getElementById("notLogin");
+const editBtn = document.getElementById("comment__edit-btn");
+const deleteBtn = document.getElementById("comment__delete-btn");
 
 const { postid, userid } = postContainer.dataset;
 if (userid === undefined) {
@@ -13,9 +15,10 @@ if (userid === undefined) {
   // flash Message
 }
 
-const addComment = (text) => {
+const addComment = (text, commentId) => {
   const postComments = document.querySelector(".post__comments ul");
   const newComment = document.createElement("li");
+  newComment.dataset.commentid = commentId;
   const btnDiv = document.createElement("div");
   const editBtn = document.createElement("button");
   const deleteBtn = document.createElement("button");
@@ -46,18 +49,25 @@ const handleSubmit = async (event) => {
     if (text.trim() === "") {
       return;
     }
-    const { status } = await fetch(`/api/posts/${postid}/comment`, {
+    const response = await fetch(`/api/posts/${postid}/comment`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ text }),
     });
-    textArea.value = "";
-    if (status === 201) {
-      addComment(text);
+    if (response.status === 201) {
+      const { newCommentId } = await response.json();
+      addComment(text, newCommentId);
+      textArea.value = "";
     }
   }
 };
 
+const handleEdit = () => {};
+
+const handleDelete = () => {};
+
 form.addEventListener("submit", handleSubmit);
+editBtn.addEventListener("click", handleEdit);
+deleteBtn.addEventListener("click", handleDelete);
