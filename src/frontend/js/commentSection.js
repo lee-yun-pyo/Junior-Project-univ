@@ -3,7 +3,7 @@ const form = document.getElementById("commentForm");
 const textArea = form.querySelector("textarea");
 const btn = form.querySelector("button");
 const loginSpan = document.getElementById("notLogin");
-const editBtn = document.getElementById("comment__edit-btn");
+const editBtn = document.querySelectorAll(".comment__edit-btn");
 const deleteBtn = document.querySelectorAll(".comment__delete-btn");
 const commentUl = document.getElementById("post__comments-ul");
 
@@ -33,12 +33,57 @@ const addComment = (text, commentId) => {
   deleteBtn.appendChild(deleteIcon);
   btnDiv.appendChild(editBtn);
   btnDiv.appendChild(deleteBtn);
+  editBtn.addEventListener("click", handleEdit);
   deleteBtn.addEventListener("click", handleDelete);
   const span = document.createElement("span");
   span.innerText = `${text}`;
   newComment.appendChild(span);
   newComment.appendChild(btnDiv);
   postComments.prepend(newComment);
+};
+
+const handleTextArea = (event) => {
+  const confirmBtn = document.querySelector(
+    ".comment__edit-btns button:last-child"
+  );
+  const text = event.target.value;
+  if (text.trim() === "") {
+    confirmBtn.classList.remove("comment__edit-confirmBtn");
+    confirmBtn.setAttribute("disabled", true);
+  } else {
+    confirmBtn.removeAttribute("disabled");
+    confirmBtn.classList.add("comment__edit-confirmBtn");
+  }
+};
+
+const paintEdit = (event) => {
+  const commentList = document.querySelector(".post__comment");
+  const li = event.target.parentNode.parentNode;
+  const text = li.innerText;
+  li.removeChild(li.childNodes[0]); // sapn 태그 삭제
+  li.removeChild(li.childNodes[0]); // btn div 삭제
+  const form = document.createElement("form");
+  const textArea = document.createElement("textarea");
+  const btnDiv = document.createElement("div");
+  const cancleBtn = document.createElement("button");
+  const confirmBtn = document.createElement("button");
+  textArea.setAttribute("placeholder", "댓글을 수정하세요...");
+  form.className = "comment__edit-form";
+  textArea.className = "comment__edit-textarea";
+  btnDiv.className = "comment__edit-btns";
+  cancleBtn.className = "comment__edit-cancleBtn";
+  confirmBtn.className = "comment__edit-confirmBtn";
+  cancleBtn.innerText = "취소";
+  confirmBtn.innerText = "수정";
+  btnDiv.appendChild(cancleBtn);
+  btnDiv.appendChild(confirmBtn);
+  // cancleBtn.addEvent
+  // confirmBtn.addEvent
+  textArea.value = text;
+  textArea.addEventListener("input", handleTextArea);
+  form.appendChild(textArea);
+  form.appendChild(btnDiv);
+  li.appendChild(form);
 };
 
 const deletComment = (event) => {
@@ -72,7 +117,9 @@ const handleSubmit = async (event) => {
   }
 };
 
-const handleEdit = () => {};
+const handleEdit = (event) => {
+  paintEdit(event);
+};
 
 const handleDelete = async (event) => {
   deletComment(event);
@@ -88,7 +135,7 @@ const handleDelete = async (event) => {
 };
 
 form.addEventListener("submit", handleSubmit);
-editBtn.addEventListener("click", handleEdit);
 for (let i = 0; i < deleteBtn.length; i++) {
+  editBtn[i].addEventListener("click", handleEdit);
   deleteBtn[i].addEventListener("click", handleDelete);
 }

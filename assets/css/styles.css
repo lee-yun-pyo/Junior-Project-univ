@@ -472,6 +472,48 @@ footer .footer-p {
   background-color: rgba(0, 0, 0, 0.5);
 }
 
+.comment__edit-form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+.comment__edit-form .comment__edit-textarea {
+  margin-bottom: 10px;
+  padding: 10px 8px;
+  width: 524px;
+  height: auto;
+  resize: none;
+  outline: none;
+  border: 0px;
+  font-family: inherit;
+  font-weight: 600;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.3);
+}
+.comment__edit-form .comment__edit-textarea:focus {
+  border-bottom: 2px solid #ED4956;
+}
+.comment__edit-form .comment__edit-btns button {
+  padding: 5px 8px;
+  border-radius: 15px;
+  margin-left: 7px;
+  border: none;
+}
+.comment__edit-form .comment__edit-btns button:first-child {
+  cursor: pointer;
+  background-color: transparent;
+}
+.comment__edit-form .comment__edit-btns button:first-child:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+.comment__edit-form .comment__edit-btns .comment__edit-confirmBtn {
+  background-color: #065FD4;
+  color: #ffffff;
+  cursor: pointer;
+}
+.comment__edit-form .comment__edit-btns .comment__edit-confirmBtn:disabled {
+  cursor: default;
+}
+
 .search-section {
   display: flex;
   align-items: center;
