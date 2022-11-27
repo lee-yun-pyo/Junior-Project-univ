@@ -447,7 +447,7 @@ footer .footer-p {
   font-size: 16px;
   color: #000;
   background-color: transparent;
-  border: 1.5px solid gray;
+  border: 1.3px solid gray;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -506,9 +506,12 @@ footer .footer-p {
   background-color: rgba(0, 0, 0, 0.1);
 }
 .comment__edit-form .comment__edit-btns .comment__edit-confirmBtn {
-  background-color: #065FD4;
+  background-color: rgb(6, 95, 212);
   color: #ffffff;
   cursor: pointer;
+}
+.comment__edit-form .comment__edit-btns .comment__edit-confirmBtn:hover {
+  background-color: rgba(6, 95, 212, 0.9);
 }
 .comment__edit-form .comment__edit-btns .comment__edit-confirmBtn:disabled {
   cursor: default;

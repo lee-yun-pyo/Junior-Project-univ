@@ -134,7 +134,7 @@
         font-size: 16px;
         color: #000;
         background-color: transparent;
-        border: 1.5px solid gray;
+        border: 1.3px solid gray;
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -197,9 +197,12 @@
             }
         }
         .comment__edit-confirmBtn {
-            background-color: #065FD4;
+            background-color: rgb(6, 95, 212);
             color: #ffffff;
             cursor: pointer;
+            &:hover {
+                background-color: rgba(6, 95, 212, 0.9);
+            }
         }
         .comment__edit-confirmBtn:disabled {
             cursor: default;

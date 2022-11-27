@@ -224,7 +224,6 @@ export const createComment = async (req, res) => {
 };
 
 export const deleteComment = async (req, res) => {
-  // 사용자가 댓글 작성자와 일치하는 지 확인
   const {
     body: { commentid },
     session: { user },
@@ -244,6 +243,20 @@ export const deleteComment = async (req, res) => {
   post.save();
   commentUser.comments.splice(commentUser.comments.indexOf(commentid), 1);
   commentUser.save();
-  // user에서도 삭제
-  // Post comment의 해당 댓글 삭제 슬라이싱
+  return res.sendStatus(200);
+};
+
+export const updateComment = async (req, res) => {
+  const {
+    body: { text, commentid },
+    session: { user },
+  } = req;
+  const comment = await Comment.findById(commentid);
+  if (String(user._id) !== String(comment.owner)) {
+    return res.sendStatus(403);
+  }
+  await Comment.findByIdAndUpdate(commentid, {
+    text,
+  });
+  return res.sendStatus(200);
 };

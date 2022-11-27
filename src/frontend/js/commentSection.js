@@ -7,6 +7,10 @@ const editBtn = document.querySelectorAll(".comment__edit-btn");
 const deleteBtn = document.querySelectorAll(".comment__delete-btn");
 const commentUl = document.getElementById("post__comments-ul");
 
+const editTextArea = document.querySelector(".comment__edit-textarea");
+if (editTextArea) {
+  const editText = editTextArea;
+}
 const { postid, userid } = postContainer.dataset;
 if (userid === undefined) {
   textArea.placeholder = "로그인 후 이용하세요";
@@ -42,6 +46,40 @@ const addComment = (text, commentId) => {
   postComments.prepend(newComment);
 };
 
+const handleEditConfirm = async (event) => {
+  event.preventDefault();
+  const textArea = event.target.parentNode.parentNode.childNodes[0];
+  const text = textArea.value;
+  const existComment = event.target.parentNode.parentNode.parentNode;
+  const { commentid } = existComment.dataset;
+  existComment.removeChild(existComment.childNodes[0]);
+  const btnDiv = document.createElement("div");
+  const editBtn = document.createElement("button");
+  const deleteBtn = document.createElement("button");
+  const editIcon = document.createElement("i");
+  const deleteIcon = document.createElement("i");
+  btnDiv.className = "post__comment-btn";
+  editIcon.className = "fa-regular fa-pen-to-square";
+  deleteIcon.className = "fa-solid fa-trash-can";
+  editBtn.appendChild(editIcon);
+  deleteBtn.appendChild(deleteIcon);
+  btnDiv.appendChild(editBtn);
+  btnDiv.appendChild(deleteBtn);
+  editBtn.addEventListener("click", handleEdit);
+  deleteBtn.addEventListener("click", handleDelete);
+  const span = document.createElement("span");
+  span.innerText = text;
+  existComment.appendChild(span);
+  existComment.appendChild(btnDiv);
+  await fetch(`/api/comment/${postid}/update`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ text, commentid }),
+  });
+};
+
 const handleTextArea = (event) => {
   const confirmBtn = document.querySelector(
     ".comment__edit-btns button:last-child"
@@ -57,7 +95,6 @@ const handleTextArea = (event) => {
 };
 
 const paintEdit = (event) => {
-  const commentList = document.querySelector(".post__comment");
   const li = event.target.parentNode.parentNode;
   const text = li.innerText;
   li.removeChild(li.childNodes[0]); // sapn 태그 삭제
@@ -77,9 +114,9 @@ const paintEdit = (event) => {
   confirmBtn.innerText = "수정";
   btnDiv.appendChild(cancleBtn);
   btnDiv.appendChild(confirmBtn);
-  // cancleBtn.addEvent
   // confirmBtn.addEvent
   textArea.value = text;
+  confirmBtn.addEventListener("click", handleEditConfirm);
   textArea.addEventListener("input", handleTextArea);
   form.appendChild(textArea);
   form.appendChild(btnDiv);
@@ -125,7 +162,7 @@ const handleDelete = async (event) => {
   deletComment(event);
   const li = event.target.parentNode.parentNode;
   const { commentid } = li.dataset;
-  const response = await fetch(`/api/comment/${postid}/delete`, {
+  await fetch(`/api/comment/${postid}/delete`, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
