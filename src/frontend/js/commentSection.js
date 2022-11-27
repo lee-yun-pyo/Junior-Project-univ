@@ -4,7 +4,8 @@ const textArea = form.querySelector("textarea");
 const btn = form.querySelector("button");
 const loginSpan = document.getElementById("notLogin");
 const editBtn = document.getElementById("comment__edit-btn");
-const deleteBtn = document.getElementById("comment__delete-btn");
+const deleteBtn = document.querySelectorAll(".comment__delete-btn");
+const commentUl = document.getElementById("post__comments-ul");
 
 const { postid, userid } = postContainer.dataset;
 if (userid === undefined) {
@@ -27,16 +28,23 @@ const addComment = (text, commentId) => {
   newComment.className = "post__comment";
   btnDiv.className = "post__comment-btn";
   editIcon.className = "fa-regular fa-pen-to-square";
-  deleteBtn.className = "fa-solid fa-trash-can";
+  deleteIcon.className = "fa-solid fa-trash-can";
   editBtn.appendChild(editIcon);
   deleteBtn.appendChild(deleteIcon);
   btnDiv.appendChild(editBtn);
   btnDiv.appendChild(deleteBtn);
+  deleteBtn.addEventListener("click", handleDelete);
   const span = document.createElement("span");
   span.innerText = `${text}`;
   newComment.appendChild(span);
   newComment.appendChild(btnDiv);
   postComments.prepend(newComment);
+};
+
+const deletComment = (event) => {
+  const commentContainer = document.querySelector(".post__comments ul");
+  const li = event.target.parentNode.parentNode;
+  commentContainer.removeChild(li);
 };
 
 const handleSubmit = async (event) => {
@@ -66,8 +74,21 @@ const handleSubmit = async (event) => {
 
 const handleEdit = () => {};
 
-const handleDelete = () => {};
+const handleDelete = async (event) => {
+  deletComment(event);
+  const li = event.target.parentNode.parentNode;
+  const { commentid } = li.dataset;
+  const response = await fetch(`/api/comment/${postid}/delete`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ commentid }),
+  });
+};
 
 form.addEventListener("submit", handleSubmit);
 editBtn.addEventListener("click", handleEdit);
-deleteBtn.addEventListener("click", handleDelete);
+for (let i = 0; i < deleteBtn.length; i++) {
+  deleteBtn[i].addEventListener("click", handleDelete);
+}

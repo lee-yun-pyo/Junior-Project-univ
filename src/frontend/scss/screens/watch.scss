@@ -144,10 +144,14 @@
         .post__comment-btn  {
             button {
                 background-color: transparent;
-                margin-left: 10px;
+                margin-left: 15px;
                 border: none;
                 cursor: pointer;
-                padding: 5px;
+                padding: 4px;
+                i {
+                    font-size: 16px;
+                    pointer-events: none;
+                }
                 &:hover {
                     border-radius: 4px;
                     color: #fff;

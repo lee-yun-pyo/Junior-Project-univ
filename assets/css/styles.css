@@ -457,10 +457,14 @@ footer .footer-p {
 }
 .post__comments .post__comment .post__comment-btn button {
   background-color: transparent;
-  margin-left: 10px;
+  margin-left: 15px;
   border: none;
   cursor: pointer;
-  padding: 5px;
+  padding: 4px;
+}
+.post__comments .post__comment .post__comment-btn button i {
+  font-size: 16px;
+  pointer-events: none;
 }
 .post__comments .post__comment .post__comment-btn button:hover {
   border-radius: 4px;

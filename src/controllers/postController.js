@@ -206,6 +206,7 @@ export const createComment = async (req, res) => {
     session: { user },
     params: { id },
   } = req;
+  const commentUser = await User.findById(user._id);
   const post = await Post.findById(id);
   if (!post) {
     return res.sendStatus(404);
@@ -217,5 +218,32 @@ export const createComment = async (req, res) => {
   });
   post.comments.push(comment._id);
   post.save();
+  commentUser.comments.push(comment._id);
+  commentUser.save();
   return res.status(201).json({ newCommentId: comment._id }); // 201: Created
+};
+
+export const deleteComment = async (req, res) => {
+  // 사용자가 댓글 작성자와 일치하는 지 확인
+  const {
+    body: { commentid },
+    session: { user },
+    params: { id },
+  } = req;
+  const post = await Post.findById(id);
+  if (!post) {
+    return res.sendStatus(404);
+  }
+  const commentUser = await User.findById(user._id);
+  const comment = await Comment.findById(commentid);
+  if (String(user._id) !== String(comment.owner)) {
+    return res.sendStatus(403);
+  }
+  await Comment.findByIdAndDelete(commentid);
+  post.comments.splice(post.comments.indexOf(commentid), 1);
+  post.save();
+  commentUser.comments.splice(commentUser.comments.indexOf(commentid), 1);
+  commentUser.save();
+  // user에서도 삭제
+  // Post comment의 해당 댓글 삭제 슬라이싱
 };
