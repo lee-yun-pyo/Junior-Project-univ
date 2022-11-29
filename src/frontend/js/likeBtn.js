@@ -12,7 +12,7 @@ const likeClick = () => {
       const messageDiv = document.createElement("div");
       messageDiv.classList.add("message", "error");
       const span = document.createElement("span");
-      span.innerText = "로그인 후 이용하세요";
+      span.innerText = "✔ 로그인 후 이용하세요";
       messageDiv.appendChild(span);
       main.appendChild(messageDiv);
       // flash Message

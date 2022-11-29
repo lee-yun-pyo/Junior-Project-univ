@@ -1,5 +1,5 @@
 header {
-    margin: 15px;
+    margin: 10px;
 }
 .header_nav {
     display: flex;
@@ -23,6 +23,12 @@ header {
 }
 
 .header_ul-li {
-    margin-left: 20px;
+    margin-left: 15px;
     font-weight: 600;
+    padding: 10px;
+    border-radius: 20px;
+    cursor: pointer;
+    &:hover {
+        background-color: rgba(0,0,0, 0.1);
+    }
 }
