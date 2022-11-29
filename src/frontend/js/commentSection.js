@@ -135,8 +135,8 @@ const handleSubmit = async (event) => {
     loginSpan.innerText = "로그인 후 이용하세요";
     // flash Message
   } else {
-    const text = textArea.value;
-    if (text.trim() === "") {
+    const text = textArea.value.trim();
+    if (text === "") {
       return;
     }
     const response = await fetch(`/api/posts/${postid}/comment`, {

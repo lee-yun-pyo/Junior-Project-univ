@@ -41,7 +41,7 @@ block content
                 ul#post__comments-ul
                     each comment in post.comments.reverse()
                         li.post__comment(data-commentId=comment._id)
-                            span #{comment.text}
+                            span !{comment.text}
                             if (loggedIn && String(comment.owner) === String(loggedInUser._id))
                                 div.post__comment-btn 
                                     button.comment__edit-btn

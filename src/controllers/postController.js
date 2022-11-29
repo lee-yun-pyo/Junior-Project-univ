@@ -211,8 +211,14 @@ export const createComment = async (req, res) => {
   if (!post) {
     return res.sendStatus(404);
   }
+  let newText = "";
+  if (text.includes("\n")) {
+    newText = text.replace(/(\n|\r\n)/g, "<br>");
+  } else {
+    newText = text;
+  }
   const comment = await Comment.create({
-    text,
+    text: newText,
     owner: user._id,
     post: id,
   });
