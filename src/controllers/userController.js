@@ -1,5 +1,6 @@
 import User from "../models/User";
 import bcrypt from "bcrypt";
+import Post from "../models/Post";
 
 export const getJoin = (req, res) =>
   res.render("join", { pageTitle: "회원 가입" });
@@ -10,19 +11,16 @@ export const postJoin = async (req, res) => {
   const idExists = await User.exists({ id });
   const nameExists = await User.exists({ name });
   if (nameExists) {
-    return res
-      .status(400)
-      .render("join", { pageTitle, errorMessage: "Name이 존재합니다" });
+    req.flash("error", "Name이 존재합니다");
+    return res.status(400).render("join", { pageTitle });
   }
   if (idExists) {
-    return res
-      .status(400)
-      .render("join", { pageTitle, errorMessage: "ID가 존재합니다" });
+    req.flash("error", "ID가 존재합니다");
+    return res.status(400).render("join", { pageTitle });
   }
   if (password !== password2) {
-    return res
-      .status(400)
-      .render("join", { pageTitle, errorMessage: "password가 다릅니다" });
+    req.flash("error", "password가 다릅니다");
+    return res.status(400).render("join", { pageTitle });
   }
   try {
     await User.create({
@@ -49,16 +47,15 @@ export const postLogin = async (req, res) => {
   // 비번 확인
   const user = await User.findOne({ id }); // 있으면 object 반환 없으면 null
   if (!user) {
+    req.flash("error", "ID가 존재하지 않습니다");
     return res.status(400).render("login", {
       pageTitle,
-      errorMessage: "ID 존재 하지 않음",
     });
   }
   const isPassword = await bcrypt.compare(password, user.password); // 맞지 않으면 false 맞 true
   if (!isPassword) {
-    return res
-      .status(400)
-      .render("login", { pageTitle, errorMessage: "password 틀림" });
+    req.flash("error", "password가 틀립니다");
+    return res.status(400).render("login", { pageTitle });
   }
   req.session.loggedIn = true;
   req.session.user = user;
@@ -74,26 +71,26 @@ export const postEdit = async (req, res) => {
       user: { _id },
     },
   } = req;
-  const pageTitle = "Edit Profile";
+  const pageTitle = "프로필 수정";
   const nowUser = await User.findById({ _id });
   if (name === nowUser.name && id === nowUser.id) {
+    req.flash("error", "Name 또는 ID를 변경하세요");
     return res.status(400).render("edit-profile", {
       pageTitle,
-      errorMessage: "Name 또는 ID를 변경하세요",
     });
   }
   const nameExists = await User.exists({ name });
   const idExists = await User.exists({ id });
   if (nameExists) {
+    req.flash("error", "Name이 이미 존재합니다");
     return res.status(400).render("edit-profile", {
       pageTitle,
-      errorMessage: "Name이 이미 존재합니다",
     });
   }
   if (idExists) {
+    req.flash("error", "ID가 이미 존재합니다");
     return res.status(400).render("edit-profile", {
       pageTitle,
-      errorMessage: "ID가 이미 존재합니다",
     });
   }
   const updateUser = await User.findByIdAndUpdate(
@@ -137,27 +134,28 @@ export const postChangePassword = async (req, res) => {
   } = req;
   const ok = await bcrypt.compare(oldPassword, password); // 맞지 않으면 false 맞 true
   if (!ok) {
+    req.flash("error", "현 비밀번호가 다릅니다");
     return res.status(400).render("change-password", {
       pageTitle,
-      errorMessage: "현 비밀번호가 다릅니다",
     });
   }
   if (oldPassword === newPassword) {
+    req.flash("error", "현재 비밀번호와 새 비밀번호가 같습니다");
     return res.status(400).render("change-password", {
       pageTitle,
-      errorMessage: "현재 비밀번호와 새 비밀번호가 같습니다",
     });
   }
   if (newPassword !== newPassword2) {
+    req.flash("error", "새 비밀번호가 다릅니다");
     return res.status(400).render("change-password", {
       pageTitle,
-      errorMessage: "새 비밀번호가 다릅니다",
     });
   }
   const user = await User.findById(_id);
   user.password = newPassword;
   await user.save();
   req.session.destroy();
+  req.flash("error", "비밀번호가 변경되었습니다.");
   res.redirect("/login");
 };
 

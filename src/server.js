@@ -1,6 +1,7 @@
 import express from "express";
 import morgan from "morgan";
 import session from "express-session";
+import flash from "express-flash";
 import MongoStore from "connect-mongo";
 import globalRouter from "./routers/globalRouter";
 import userRouter from "./routers/userRouter";
@@ -20,6 +21,9 @@ app.set("views", process.cwd() + "/src/views");
 /* req.body 가져오기 위한 middleware */
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json({}));
+
+/* express-flash message 처리 */
+app.use(flash());
 
 /* session 처리 middleware */
 app.use(

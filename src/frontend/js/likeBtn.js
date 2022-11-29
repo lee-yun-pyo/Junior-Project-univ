@@ -2,14 +2,19 @@ const likeBtn = document.getElementById("likeBtn");
 const icon = document.getElementById("likeBtnIcon");
 const likeNumber = document.getElementById("likeSpan");
 const postContainer = document.getElementById("postContainer");
-const loginSpan = document.getElementById("notLogin");
+const main = document.querySelector("main");
 
 const likeClick = () => {
   const { postid, userid } = postContainer.dataset;
   let num = parseInt(likeNumber.innerText);
   if (icon.classList.contains("fa-regular")) {
     if (userid === undefined) {
-      loginSpan.innerText = "로그인 후 이용하세요";
+      const messageDiv = document.createElement("div");
+      messageDiv.classList.add("message", "error");
+      const span = document.createElement("span");
+      span.innerText = "로그인 후 이용하세요";
+      messageDiv.appendChild(span);
+      main.appendChild(messageDiv);
       // flash Message
     } else {
       icon.classList.remove("fa-regular");

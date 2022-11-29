@@ -1,8 +1,6 @@
 extends base.pug
 
-block content
-    span#notLogin 
-    p#p
+block content 
     div#watchDiv
         div#postContainer(data-userId=loggedInUser._id, data-postId=post._id)
             div.watchInfo
@@ -31,7 +29,7 @@ block content
                 span.watchSubInfo-date=compactDate
             
             div.post__add-comments
-                span 댓글 #{post.comments.length}개
+                span 칭찬 #{post.comments.length}개
                 form.post__comments-form#commentForm
                     textarea(name="", cols="30", rows="10" placeholder="댓글을 입력해주세요")
                     button
