@@ -15,7 +15,7 @@ block content
                         span#likeSpan=post.thumbsup
                 span.watchInfo-views 조회수 #{post.views + 1}  
             img(src="/"+post.imageUrl width=100 height=100).watchImage
-            p.watchDescription=post.description
+            p.watchDescription !{post.description}
             hr
             div.watchSubInfo
                 div.watchSubInfo-div

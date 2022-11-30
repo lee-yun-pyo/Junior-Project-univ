@@ -2,11 +2,11 @@ extends base.pug
 
 block content 
     div.login-entire_div
-        div.login-div
-            form(method="POST", enctype="multipart/form-data").login-form
+        div.login-div.upload-div
+            form(method="POST", enctype="multipart/form-data").login-form.upload-form
                 img(src="/"+post.imageUrl width=200 height=200).edit-form_img
                 label(for="image").upload-label 이미지 첨부
                 input(type="file" id="image" name="image" accept="image/*").login-form_inputText
                 span.editPost__form-title #{post.title}
-                input(name="description" type="text" value=post.description placeholder="Description" required).login-form_inputText
-                input(value="Edit" type="submit").login-form_submit
+                textarea(name="description" placeholder="상세 설명" required).login-form_textArea.edit-textarea #{post.description.replace(/(<br>|<br\/>|<br \/>)/g, '\r\n')}
+                input(value="수정" type="submit").login-form_submit

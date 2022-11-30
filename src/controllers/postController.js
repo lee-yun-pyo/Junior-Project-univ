@@ -108,13 +108,19 @@ export const postEdit = async (req, res) => {
   if (!post) {
     res.status(404).render("404", { pageTitle: "" });
   }
+  let newDescription = "";
+  if (description.includes("\n")) {
+    newDescription = description.replace(/(\n|\r\n)/g, "<br>");
+  } else {
+    newDescription = description;
+  }
   // if (String(post.owner) !== String(_id)) {
   //   return res.status(403).redirect("/");
   // }
   await Post.findByIdAndUpdate(id, {
     imageUrl: file ? file.path : post.imageUrl,
     title,
-    description,
+    description: newDescription,
   });
   res.redirect(`/posts/${id}`);
 };
@@ -144,11 +150,17 @@ export const postUpload = async (req, res) => {
     body: { title, description },
     file,
   } = req;
+  let newDescription = "";
+  if (description.includes("\n")) {
+    newDescription = description.replace(/(\n|\r\n)/g, "<br>");
+  } else {
+    newDescription = description;
+  }
   try {
     const newPost = await Post.create({
       imageUrl: file.path,
       title,
-      description,
+      description: newDescription,
       owner: _id,
     });
     const user = await User.findById(_id);

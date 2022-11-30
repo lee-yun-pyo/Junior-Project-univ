@@ -28,16 +28,29 @@
             outline: none;
             border: 1px solid rgba(0,0,0,0.3);
         }
+        .login-form_textArea {
+            font-size: 15px;
+            width: 100%;
+            resize: none;
+            font-family: inherit;
+            padding: 10px;
+            border-radius: 10px;
+            outline: none;
+            border: 1px solid rgba(0,0,0,0.3);
+        }
         .login-form_submit {
             padding: 10px 15px;
             font-weight: 600;
-            width: 70%;
+            width: 50%;
             border: none;
             border-radius: 20px;
             margin-top: 10px;
             color: white;
             cursor: pointer;
             background-color: rgba(0,0,0,0.7);
+            &:hover {
+                background-color: rgba(0, 0, 0, 0.9);
+            }
         }
         .editPost__form-title {
             margin-bottom: 15px;
@@ -70,4 +83,15 @@
     background-color: rgba(0,0,0,0.1);
     width: 100%;
     margin: 20px 0;
+}
+
+.upload-div {
+    width: 600px;
+    .upload-form {
+        width: inherit;
+    }
+}
+
+.edit-textarea {
+    height: 140px;
 }
