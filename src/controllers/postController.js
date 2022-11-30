@@ -18,6 +18,42 @@ export const home = async (req, res) => {
   }
 };
 
+export const latest = async (req, res) => {
+  try {
+    const latestPosts = await Post.find({}).sort({ createdAt: "desc" });
+    res.render("latest", {
+      pageTitle: "최신 게시글",
+      latestPosts,
+    });
+  } catch {
+    res.render("server-error");
+  }
+};
+
+export const mostlike = async (req, res) => {
+  try {
+    const thumbsupPosts = await Post.find({}).sort({ thumbsup: "desc" });
+    res.render("mostlike", {
+      pageTitle: "최다 좋아요",
+      thumbsupPosts,
+    });
+  } catch {
+    res.render("server-error");
+  }
+};
+
+export const mostview = async (req, res) => {
+  try {
+    const viewsPosts = await Post.find({}).sort({ views: "desc" });
+    res.render("mostview", {
+      pageTitle: "최다 조회수",
+      viewsPosts,
+    });
+  } catch {
+    res.render("server-error");
+  }
+};
+
 export const watch = async (req, res) => {
   const { id } = req.params;
   const post = await Post.findById(id).populate("owner").populate("comments");

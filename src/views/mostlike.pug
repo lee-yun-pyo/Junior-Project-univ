@@ -1,0 +1,11 @@
+extends base
+include mixins/post
+
+block content
+    div.home
+        section.home-section
+                div.home-post_div
+                    each item in thumbsupPosts
+                        +post(item)
+                    else 
+                        span 게시글이 없습니다

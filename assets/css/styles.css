@@ -165,10 +165,19 @@ footer .footer-p {
 .home h1 {
   margin-bottom: 40px;
 }
-.home .home-section .home-subtitle {
+.home .home-section .home-section__title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 25px;
+  font-weight: 600;
+}
+.home .home-section .home-section__title .home-subtitle {
   font-size: 20px;
   font-weight: 600;
-  margin-bottom: 25px;
+}
+.home .home-section .home-section__title .home-viewMore:hover {
+  text-decoration: underline;
 }
 .home h1 {
   font-size: 40px;

@@ -1,5 +1,11 @@
 import express from "express";
-import { home, search } from "../controllers/postController";
+import {
+  home,
+  search,
+  latest,
+  mostview,
+  mostlike,
+} from "../controllers/postController";
 import {
   getJoin,
   postJoin,
@@ -21,5 +27,8 @@ globalRouter
   .get(getLogin)
   .post(postLogin);
 globalRouter.get("/search", search);
+globalRouter.get("/latest", latest);
+globalRouter.get("/mostlike", mostlike);
+globalRouter.get("/mostview", mostview);
 
 export default globalRouter;
