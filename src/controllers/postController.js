@@ -261,8 +261,14 @@ export const updateComment = async (req, res) => {
   if (String(user._id) !== String(comment.owner)) {
     return res.sendStatus(403);
   }
+  let newText = "";
+  if (text.includes("\n")) {
+    newText = text.replace(/(\n|\r\n)/g, "<br>");
+  } else {
+    newText = text;
+  }
   await Comment.findByIdAndUpdate(commentid, {
-    text,
+    text: newText,
   });
   return res.sendStatus(200);
 };

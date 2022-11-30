@@ -464,6 +464,7 @@ footer .footer-p {
 .post__comments .post__comment span {
   padding: 5px 0;
   line-height: 145%;
+  max-width: 470px;
 }
 .post__comments .post__comment .post__comment-btn button {
   background-color: transparent;
