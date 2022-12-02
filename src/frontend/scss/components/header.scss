@@ -1,5 +1,5 @@
 header {
-    margin: 10px;
+    padding: 12px;
 }
 .header_nav {
     display: flex;
@@ -24,8 +24,8 @@ header {
 
 .header_ul-li {
     margin-left: 15px;
-    font-weight: 600;
-    padding: 10px;
+    font-weight: bold;
+    padding: 8px 1rem;
     border-radius: 20px;
     cursor: pointer;
     &:hover {

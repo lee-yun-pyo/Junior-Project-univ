@@ -13,7 +13,8 @@ html(lang="en")
     if messages.info 
       +message("info", messages.info)
     include partials/header.pug
-    main    
+    main#wrap
+      div#wraper-div    
         block content
-    include partials/footer.pug
+      include partials/footer.pug
   block scripts

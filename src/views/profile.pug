@@ -4,7 +4,8 @@ include mixins/post
 block content
     div.home          
         section.home-section
-            p.home-subtitle #{user.name} 유저가 업로드한 게시글
+            div.home-section__title
+                p.home-subtitle #{user.name} 유저가 업로드한 게시글
             div.home-post_div
                 each item in user.posts 
                     +post(item)
