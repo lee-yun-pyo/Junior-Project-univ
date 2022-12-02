@@ -156,6 +156,11 @@ export const postUpload = async (req, res) => {
   } else {
     newDescription = description;
   }
+  const titleExists = await Post.exists({ title });
+  if (titleExists) {
+    req.flash("error", "✔ 이미 게시한 이름이 있습니다. ");
+    return res.status(400).render("upload", { pageTitle: "글 올리기" });
+  }
   try {
     const newPost = await Post.create({
       imageUrl: file.path,

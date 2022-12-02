@@ -2,7 +2,13 @@ import mongoose from "mongoose";
 
 const postSchema = new mongoose.Schema({
   imageUrl: { type: String, required: true },
-  title: { type: String, required: true, trim: true, maxLength: 50 },
+  title: {
+    type: String,
+    required: true,
+    trim: true,
+    maxLength: 20,
+    unique: true,
+  },
   description: { type: String, required: true, trim: true },
   createdAt: { type: Date, required: true, default: Date.now },
   views: { type: Number, required: true, default: 0 },
