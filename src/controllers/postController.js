@@ -186,6 +186,7 @@ export const deletePost = async (req, res) => {
     user: { _id },
   } = req.session;
   const post = await Post.findById(id);
+  await Comment.deleteMany({ post: id });
   const user = await User.findById(_id);
   if (!post) {
     res.status(404).render("404", { pageTitle: "" });
