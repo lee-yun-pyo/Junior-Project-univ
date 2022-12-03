@@ -179,8 +179,21 @@ footer a:hover {
   justify-content: center;
   padding: 30px;
 }
-.home h1 {
+.home .home__title-div h1 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  letter-spacing: 2px;
   margin-bottom: 40px;
+}
+.home .home__title-div h1 span:first-child {
+  color: #CD2E3A;
+  font-size: 45px;
+  margin-bottom: 5px;
+}
+.home .home__title-div h1 span:last-child {
+  color: #0047A0;
+  font-size: 45px;
 }
 .home .home-section .home-section__title {
   display: flex;

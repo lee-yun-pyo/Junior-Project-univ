@@ -77,7 +77,7 @@ export const watch = async (req, res) => {
   if (!post) {
     res.status(404).render("404", { pageTitle: "" });
   }
-  res.render("watch", { pageTitle: "Do you know", post, compactDate });
+  res.render("watch", { pageTitle: post.title, post, compactDate });
 };
 
 export const getEdit = async (req, res) => {
@@ -135,7 +135,7 @@ export const search = async (req, res) => {
       },
     });
   }
-  res.render("search", { pageTitle: "Do you know", posts });
+  res.render("search", { pageTitle: "검색", posts });
 };
 
 export const getUpload = (req, res) => {

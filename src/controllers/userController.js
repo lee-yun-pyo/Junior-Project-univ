@@ -38,7 +38,7 @@ export const postJoin = async (req, res) => {
   }
 };
 export const getLogin = (req, res) =>
-  res.render("login", { pageTitle: "Login" });
+  res.render("login", { pageTitle: "로그인" });
 
 export const postLogin = async (req, res) => {
   const { id, password } = req.body;
