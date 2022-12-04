@@ -200,7 +200,7 @@ export const deletePost = async (req, res) => {
   res.redirect("/");
 };
 
-export const registerView = async (req, res) => {
+export const addThumbsup = async (req, res) => {
   const {
     session: {
       user: { _id },
@@ -220,7 +220,7 @@ export const registerView = async (req, res) => {
   return res.sendStatus(200);
 };
 
-export const unRegisterView = async (req, res) => {
+export const cancleThumbsup = async (req, res) => {
   const {
     session: {
       user: { _id },
