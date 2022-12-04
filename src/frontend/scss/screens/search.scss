@@ -3,17 +3,18 @@
     align-items: center;
     justify-content: center;
     font-size: 2em;
-    font-weight: 500;
     margin-bottom: 30px;
-    width: 80%;
+    margin-top: 20px;
+    width: 70%;
     border-radius: 8px;
-    border: 1px solid #e9ecef;
     background-color: #F8F9FA;
     padding: 20px;
+    box-shadow: 2px 5px 10px rgb(0 0 0 / 20%);
     .search-section_span {
         //font-size: 30px;
         margin-right: 10px;
         margin-left: 5px;
+        font-weight: 600;
     }
 
     .search-section_form {
@@ -26,6 +27,7 @@
             background: transparent;
             outline: none;
             width: 350px;
+            font-weight: 600;
         }
         .search-section_form-submit {
             display: none;

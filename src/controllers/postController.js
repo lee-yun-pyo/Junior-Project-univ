@@ -8,7 +8,7 @@ export const home = async (req, res) => {
     const thumbsupPosts = await Post.find({}).sort({ thumbsup: "desc" });
     const viewsPosts = await Post.find({}).sort({ views: "desc" });
     res.render("home", {
-      pageTitle: "Do you know",
+      pageTitle: "Home",
       recentPosts,
       thumbsupPosts,
       viewsPosts,
