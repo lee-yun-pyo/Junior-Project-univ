@@ -4,7 +4,7 @@ block content
     div.login-entire_div
         div.login-div.upload-div
             form(method="POST", enctype="multipart/form-data").login-form.upload-form
-                img(src="/"+post.imageUrl width=200 height=200).edit-form_img
+                img(src="/"+post.imageUrl width=170 height=170).edit-form_img
                 label(for="image").upload-label 이미지 첨부
                 input(type="file" id="image" name="image" accept="image/*").login-form_inputText
                 span.editPost__form-title #{post.title}

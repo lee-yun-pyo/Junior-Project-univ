@@ -9,6 +9,7 @@ module.exports = {
     likeBtn: BASE_JS + "likeBtn",
     views: BASE_JS + "views",
     commentSection: BASE_JS + "commentSection",
+    homeText: BASE_JS + "homeText",
   }, // entry 처리하고자 하는 파일
   mode: "development", // 가공된 js파일이 개발하기 편하게 정리 (원래 한줄 코드: production)
   watch: true, // 자동으로 webpack은 해석 된 파일의 변경 사항을 계속 감시

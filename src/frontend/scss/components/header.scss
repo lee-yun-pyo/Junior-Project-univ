@@ -32,3 +32,13 @@ header {
         background-color: rgba(0,0,0, 0.1);
     }
 }
+.header_ul-li:first-child {
+    padding: 8px;
+}
+.header_ul-li:last-child {
+    background-color: black;
+    color: #fff;
+    &:hover {
+        background-color: rgba(0,0,0, 0.8);
+    }
+}

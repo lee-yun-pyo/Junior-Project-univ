@@ -60,10 +60,19 @@ table {
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
+  padding: 10px 5px;
+  border-radius: 8px;
+  transition: all 0.2s ease-out;
+}
+.post-div:hover {
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.15);
+}
+.post-div:hover img {
+  transform: scale(1.15, 1.15);
 }
 .post-div .post-photo {
-  height: 130px;
-  width: 180px;
+  height: 150px;
+  width: 190px;
   overflow: hidden;
   border-radius: 8px;
 }
@@ -71,6 +80,7 @@ table {
   width: 100%;
   height: 100%;
   display: block;
+  transition: all 0.5s ease-out 0s;
 }
 .post-div .post-info {
   width: 100%;
@@ -144,6 +154,18 @@ header {
   background-color: rgba(0, 0, 0, 0.1);
 }
 
+.header_ul-li:first-child {
+  padding: 8px;
+}
+
+.header_ul-li:last-child {
+  background-color: black;
+  color: #fff;
+}
+.header_ul-li:last-child:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
 footer {
   height: 100px;
   display: flex;
@@ -177,23 +199,33 @@ footer a:hover {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 30px;
+  margin-bottom: 25px;
 }
-.home .home__title-div h1 {
+.home .home__title-div {
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+  padding: 50px 0;
+  margin-bottom: 25px;
+}
+.home .home__title-div div {
   display: flex;
-  flex-direction: column;
   align-items: center;
+  justify-content: center;
   letter-spacing: 2px;
-  margin-bottom: 40px;
-}
-.home .home__title-div h1 span:first-child {
-  color: #CD2E3A;
-  font-size: 45px;
+  color: #fff;
+  font-size: 55px;
   margin-bottom: 5px;
 }
-.home .home__title-div h1 span:last-child {
-  color: #0047A0;
-  font-size: 45px;
+.home .home__title-div div span:first-child {
+  padding-right: 20px;
+  font-style: italic;
+}
+.home .home__title-div div .text {
+  color: white;
+  font-weight: 600;
+  color: color;
+  font-size: 55px;
+  font-family: sans-serif;
 }
 .home .home-section .home-section__title {
   display: flex;
@@ -208,10 +240,6 @@ footer a:hover {
 }
 .home .home-section .home-section__title .home-viewMore:hover {
   text-decoration: underline;
-}
-.home h1 {
-  font-size: 40px;
-  font-weight: 700;
 }
 .home .home-post_div {
   display: grid;
@@ -283,9 +311,9 @@ footer a:hover {
   align-items: center;
   justify-content: center;
   width: 300px;
-  border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 20px;
   padding: 40px 25px;
+  box-shadow: 2px 4px 12px rgba(0, 0, 0, 0.08);
 }
 .login-div .login-form {
   display: flex;
@@ -357,14 +385,14 @@ footer a:hover {
 }
 
 .upload-div {
-  width: 600px;
+  width: 500px;
 }
 .upload-div .upload-form {
   width: inherit;
 }
 
 .edit-textarea {
-  height: 140px;
+  height: 110px;
 }
 
 .upload-label {

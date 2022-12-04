@@ -3,23 +3,32 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 30px;
+    margin-bottom: 25px;
     .home__title-div {
-        h1 {
+        width: 100%;
+        background-color: rgba(0,0,0,0.9);
+        padding: 50px 0;
+        margin-bottom: 25px;
+        div {
             display: flex;
-            flex-direction: column;
             align-items: center;
+            justify-content: center;
             letter-spacing: 2px;
-            margin-bottom: 40px;
+            color: #fff;
+            font-size: 55px;
+            margin-bottom: 5px;
             span:first-child {
-                color: #CD2E3A;
-                font-size: 45px;
-                margin-bottom: 5px;
+                padding-right: 20px;
+                font-style: italic;
             }
-            span:last-child {
-                color: #0047A0;
-                font-size: 45px;
+            .text{
+                color:white;
+                font-weight: 600;
+                color: color;
+                font-size: 55px;
+                font-family: sans-serif;
             }
+            
         }
     }
 
@@ -40,11 +49,6 @@
                 }
             }
         }
-    }
-
-    h1 {
-        font-size: 40px;
-        font-weight: 700;
     }
 
     .home-post_div {

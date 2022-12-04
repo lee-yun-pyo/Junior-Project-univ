@@ -4,9 +4,10 @@ include mixins/post
 block content
     div.home
         div.home__title-div
-            h1 
-                span Do You
-                span Know?
+            div 
+                span Do you know
+                span.text
+                span ?
         section.home-section
             div.home-section__title
                 p.home-subtitle ✔ 최다 조회수
@@ -26,6 +27,10 @@ block content
             div.home-post_div
                 each item in thumbsupPosts.slice(0, 5) 
                     +post(item)
+                    +post(item)
+                    +post(item)
+                    +post(item)
+                    +post(item)
                 else 
                     span 게시글이 없습니다
             hr
@@ -39,4 +44,6 @@ block content
                     +post(item)
                 else 
                     span 게시글이 없습니다
+block scripts 
+   script(src="/static/js/homeText.js")
 

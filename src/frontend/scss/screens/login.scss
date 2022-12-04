@@ -11,9 +11,9 @@
     align-items: center;
     justify-content: center;
     width: 300px;
-    border: 1px solid rgba(0,0,0,0.2);
     border-radius: 20px;
     padding: 40px 25px;
+    box-shadow: 2px 4px 12px rgb(0 0 0 / 8%);
     .login-form {
         display: flex;
         flex-direction: column;
@@ -86,12 +86,12 @@
 }
 
 .upload-div {
-    width: 600px;
+    width: 500px;
     .upload-form {
         width: inherit;
     }
 }
 
 .edit-textarea {
-    height: 140px;
+    height: 110px;
 }
