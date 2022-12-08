@@ -4,6 +4,11 @@
     align-items: center;
     justify-content: center;
     margin-bottom: 25px;
+    .home__more-title {
+        margin: 20px 0;
+        font-size: 25px;
+        font-weight: 600;
+    }
     .home__title-div {
         width: 100%;
         background-color: rgba(0,0,0,0.9);
@@ -49,6 +54,9 @@
                     text-decoration: underline;
                 }
             }
+        }
+        hr {
+            margin-bottom: 13px;
         }
     }
 

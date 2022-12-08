@@ -17,7 +17,6 @@ const postSchema = new mongoose.Schema({
     { type: mongoose.Schema.Types.ObjectId, required: true, ref: "Comment" },
   ],
   owner: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
-  // 사진, 일일조회수, 작성자 아이디
 });
 
 const Post = mongoose.model("Post", postSchema);

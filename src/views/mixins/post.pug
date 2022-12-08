@@ -9,6 +9,10 @@ mixin post(info)
                 div.post-info_meta
                     p.post-info_meta-views #{info.views} 조회수
                     div.post-info_meta-heart
-                        i.fa-regular.fa-heart
-                        span #{info.thumbsup}
+                        div
+                            i.fa-regular.fa-heart
+                            span #{info.thumbsup}
+                        div
+                            i.fa-regular.fa-comment
+                            span #{info.comments.length}
                 

@@ -7,11 +7,13 @@ export const home = async (req, res) => {
     const recentPosts = await Post.find({}).sort({ createdAt: "desc" });
     const thumbsupPosts = await Post.find({}).sort({ thumbsup: "desc" });
     const viewsPosts = await Post.find({}).sort({ views: "desc" });
+    const commentsPosts = await Post.find({}).sort({ comments: "desc" });
     res.render("home", {
       pageTitle: "Home",
       recentPosts,
       thumbsupPosts,
       viewsPosts,
+      commentsPosts,
     });
   } catch {
     res.render("server-error");
@@ -36,6 +38,18 @@ export const mostlike = async (req, res) => {
     res.render("mostlike", {
       pageTitle: "최다 좋아요",
       thumbsupPosts,
+    });
+  } catch {
+    res.render("server-error");
+  }
+};
+
+export const mostComment = async (req, res) => {
+  try {
+    const commentsPosts = await Post.find({}).sort({ comments: "desc" });
+    res.render("mostComment", {
+      pageTitle: "최다 칭찬수",
+      commentsPosts,
     });
   } catch {
     res.render("server-error");

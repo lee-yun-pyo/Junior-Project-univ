@@ -6,7 +6,7 @@ block content
         p.home__more-title=pageTitle
         section.home-section
                 div.home-post_div
-                    each item in viewsPosts
+                    each item in commentsPosts
                         +post(item)
                     else 
                         span 게시글이 없습니다

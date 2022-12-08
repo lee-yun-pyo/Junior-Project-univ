@@ -32,6 +32,17 @@ block content
             hr
         section.home-section
             div.home-section__title
+                p.home-subtitle ✔ 최다 칭찬수
+                p.home-viewMore 
+                    a(href="/mostComment") 더보기 &rarr;
+            div.home-post_div
+                each item in commentsPosts.slice(0, 5) 
+                    +post(item)
+                else 
+                    span 게시글이 없습니다
+            hr
+        section.home-section
+            div.home-section__title
                 p.home-subtitle ✔ 최신 업로드
                 p.home-viewMore 
                     a(href="/latest") 더보기 &rarr;
@@ -40,6 +51,7 @@ block content
                     +post(item)
                 else 
                     span 게시글이 없습니다
+            
 block scripts 
    script(src="/static/js/homeText.js")
 

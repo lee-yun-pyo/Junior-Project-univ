@@ -5,6 +5,7 @@ import {
   latest,
   mostview,
   mostlike,
+  mostComment,
 } from "../controllers/postController";
 import {
   getJoin,
@@ -30,5 +31,6 @@ globalRouter.get("/search", search);
 globalRouter.get("/latest", latest);
 globalRouter.get("/mostlike", mostlike);
 globalRouter.get("/mostview", mostview);
+globalRouter.get("/mostComment", mostComment);
 
 export default globalRouter;

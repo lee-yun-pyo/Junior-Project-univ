@@ -54,9 +54,19 @@
         .post-info_meta-heart {
             display: flex;
             align-items: center;
-
+            
+            div:first-child {
+                i {
+                    color: $heart;
+                }
+            }
+            div:last-child {
+                i {
+                    color: #183153;
+                }
+                margin-left: 13px;
+            }
             i {
-                color: $heart;
                 margin-right: 5px;
             }
             span {
