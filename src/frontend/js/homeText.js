@@ -1,6 +1,6 @@
 var typing = new Typed(".text", {
-  strings: ["", "BTS", "봉준호", "손흥민", "J-Park", "렛츠고"],
-  typeSpeed: 50,
-  backSpeed: 100,
+  strings: ["", "BTS", "봉준호", "손흥민", "김연아", "삼성", "K-POP"],
+  typeSpeed: 100,
+  backSpeed: 120,
   loop: true,
 });

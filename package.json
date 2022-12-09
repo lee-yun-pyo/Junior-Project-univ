@@ -8,6 +8,8 @@
     "url": "git+https://github.com/lee-yun-pyo/Junior-Project-univ.git"
   },
   "scripts": {
+    "start": "node build/init.js",
+    "build:server": "babel src -d build",
     "dev:server": "nodemon",
     "dev:assets": "webpack"
   },
@@ -30,7 +32,8 @@
     "pug": "^3.0.2"
   },
   "devDependencies": {
-    "@babel/core": "^7.19.1",
+    "@babel/cli": "^7.19.3",
+    "@babel/core": "^7.20.5",
     "@babel/node": "^7.19.1",
     "@babel/preset-env": "^7.19.1",
     "babel-loader": "^9.1.0",
