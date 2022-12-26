@@ -22,6 +22,10 @@ ___
 ![Home](https://user-images.githubusercontent.com/41375597/209525991-b3ca684c-24f4-4104-bacc-14e62161de2c.png)
 
 **게시글 상세화면**
+<br />
+<br />
+<img src="https://user-images.githubusercontent.com/41375597/209528449-e2423c04-4ab8-4e00-862d-ff1d7528b825.png" width=400 />
+
 ___
 #### 📝 기능
 
